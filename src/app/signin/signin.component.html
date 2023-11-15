@@ -11,46 +11,16 @@
       </div>
     </div>
     <form
-      [formGroup]="userSignUp"
-      (ngSubmit)="signUp()"
+      [formGroup]="userLogin"
+      (ngSubmit)="onSubmit()"
       class="login-container"
     >
       <label style="text-align: left; font-weight: 700; font-size: 1.2rem"
-        >Sign Up</label
+        >Login</label
       >
       <label style="text-align: left; font-size: 12px; margin-top: 5px"
-        >Create your account here.</label
+        >Loggedin by your crediential system.</label
       >
-
-      <div class="input-group mb-2">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Enter Name"
-          formControlName="userName"
-          autocomplete="off"
-        />
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <span><mat-icon>person</mat-icon></span>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="invalid-field"
-        *ngIf="
-          userSignUp.get('userName')?.touched &&
-          userSignUp.get('userName')?.invalid
-        "
-      >
-        <div *ngIf="userSignUp.get('userName')?.hasError('required')">
-          This filed is required.
-        </div>
-        <div *ngIf="userSignUp.get('userName')?.hasError('minlength')">
-          Username length sould be atleast 3 character
-        </div>
-      </div>
 
       <div class="input-group mb-2">
         <input
@@ -70,14 +40,14 @@
       <div class="email-container invalid-field">
         <div
           *ngIf="
-            userSignUp.get('userEmail')?.touched &&
-            userSignUp.get('userEmail')?.invalid
+            userLogin.get('userEmail')?.touched &&
+            userLogin.get('userEmail')?.invalid
           "
         >
-          <span *ngIf="userSignUp.get('userEmail')?.hasError('required')"
+          <span *ngIf="userLogin.get('userEmail')?.hasError('required')"
             >This field is required.</span
           >
-          <span *ngIf="userSignUp.get('userEmail')?.hasError('email')"
+          <span *ngIf="userLogin.get('userEmail')?.hasError('email')"
             >This email format is invalid.</span
           >
         </div>
@@ -110,14 +80,13 @@
       <div
         class="invalid-field"
         *ngIf="
-          userSignUp.get('userPwd')?.touched &&
-          userSignUp.get('userPwd')?.invalid
+          userLogin.get('userPwd')?.touched && userLogin.get('userPwd')?.invalid
         "
       >
-        <span *ngIf="userSignUp.get('userPwd')?.hasError('required')">
+        <span *ngIf="userLogin.get('userPwd')?.hasError('required')">
           This field is required.
         </span>
-        <span *ngIf="userSignUp.get('userPwd')?.hasError('minlength')">
+        <span *ngIf="userLogin.get('userPwd')?.hasError('minlength')">
           Password length sould be atleast 8 character.
         </span>
       </div>
@@ -125,13 +94,19 @@
       <button
         class="btn btn-primary"
         type="submit"
-        [disabled]="userSignUp.invalid"
+        [disabled]="userLogin.invalid"
       >
-        Sign Up
+        Login
       </button>
       <hr />
-      <h3 style="color: #0000ff;cursor: pointer;user-select: none;" (click)="loginPage()">Login here</h3>
+      <h3
+        style="color: #0000ff; cursor: pointer; user-select: none"
+        (click)="signUpPage()"
+      >
+        Create your account
+      </h3>
     </form>
   </div>
 </div>
+
 <app-loader *ngIf="showLoader"></app-loader>
