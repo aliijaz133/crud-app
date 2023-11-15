@@ -40,26 +40,26 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit() {
-    // Update the user object with form values
+
     this.user.userEmail = this.userLogin.value.userEmail;
     this.user.userPwd = this.userLogin.value.userPwd;
-  
+
     // console.log('User login:', this.user);
-  
+
     this.http.post('http://localhost:3000/api/signin', this.user)
       .subscribe(
         (response: any) => {
           console.log('Server response:', response);
-  
+
           localStorage.setItem('userId', response._id);
-  
+
           this.toastr.success('Successfully Logged in.');
-  
-          this.router.navigate(['/user-dashboard/home']);
+
+          this.router.navigate(['/user-dashboard/home'], { queryParams: { userEmail: this.user.userEmail } });
         },
         (error) => {
           console.error('Server error:', error);
-  
+
           if (error.status === 401) {
             this.toastr.error('Invalid email or password');
           } else {
@@ -68,7 +68,7 @@ export class SigninComponent implements OnInit {
         }
       );
   }
-  
+
   signUpPage() {
     this.router.navigate(['/signup']);
   }

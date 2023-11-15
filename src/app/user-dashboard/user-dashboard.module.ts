@@ -14,6 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoaderComponent } from './loader/loader.component';
+import { DollarGraphComponent } from './dollar-graph/dollar-graph.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { LoaderComponent } from './loader/loader.component';
     GraphComponent,
     TotalUserComponent,
     WalletChartComponent,
-    LoaderComponent
+    LoaderComponent,
+    DollarGraphComponent,
+    PagenotfoundComponent
   ],
   imports: [
     CommonModule,

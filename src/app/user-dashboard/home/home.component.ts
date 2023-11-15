@@ -20,6 +20,10 @@ export class HomeComponent implements OnInit {
     const web3 = this.web3service.logThings();
 
     try {
+      if (typeof web3.currentProvider['enable'] !== 'undefined') {
+        await web3.currentProvider['enable'](); // Request account access if needed
+      }
+
       const accounts = await web3.eth.requestAccounts();
       this.userAddress = accounts[0];
       console.log('User Address:', this.userAddress);
@@ -27,15 +31,13 @@ export class HomeComponent implements OnInit {
       const balance = await web3.eth.getBalance(this.userAddress);
       this.userBalance = web3.utils.fromWei(balance, 'ether');
       console.log('User Balance:', this.userBalance);
-      this.toastr.success('user Balance.')
+      this.toastr.success('User Balance: ' + this.userBalance);
     } catch (error) {
       console.error('Error requesting accounts:', error);
-      this.toastr.error('Error requesting account.')
+      this.toastr.error('Error requesting account.');
     }
 
-    setTimeout(() => {
-      this.showLoader = false;
-    }, 2000);
+    this.showLoader = false;
   }
 
   async requestAccounts() {
@@ -44,6 +46,10 @@ export class HomeComponent implements OnInit {
     const web3 = this.web3service.logThings();
 
     try {
+      if (typeof web3.currentProvider['enable'] !== 'undefined') {
+        await web3.currentProvider['enable'](); // Request account access if needed
+      }
+
       const accounts = await web3.eth.requestAccounts();
       this.userAddress = accounts[0];
       console.log('User Address:', this.userAddress);
@@ -51,11 +57,10 @@ export class HomeComponent implements OnInit {
       const balance = await web3.eth.getBalance(this.userAddress);
       this.userBalance = web3.utils.fromWei(balance, 'ether');
       console.log('User Balance:', this.userBalance);
-      this.toastr.success('User Balance')
-
+      this.toastr.success('User Balance: ' + this.userBalance);
     } catch (error) {
       console.error('Error requesting accounts:', error);
-      this.toastr.error('Error requesting account.')
+      this.toastr.error('Error requesting account.');
     }
 
     this.showLoader = false;

@@ -1,0 +1,16 @@
+<main>
+  <app-header></app-header>
+
+  <div class="main-container">
+    <div>
+      <app-sidebar></app-sidebar>
+    </div>
+    <div>
+      <h4 style="margin: 10px; text-decoration: underline; font-weight: 500">
+        Graph
+      </h4>
+      <div id="dollarGraph" style="width: 100%; height: 100vh;"></div>
+    </div>
+  </div>
+</main>
+<app-loader *ngIf="showLoader"></app-loader>

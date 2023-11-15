@@ -14,7 +14,6 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { LoaderComponent } from './loader/loader.component';
 import { SigninComponent } from './signin/signin.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     SignupComponent,
     LoaderComponent,
     SigninComponent,
-    DashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
@@ -17,7 +17,7 @@ export class WalletChartComponent implements OnInit {
 
   @ViewChild('walletChart', { static: true }) walletGraph!: ElementRef;
 
-  constructor(private ngZone: NgZone) {
+  constructor() {
   }
 
   ngOnInit(): void {
