@@ -1,0 +1,49 @@
+<main>
+    <div class="offcanvas-body">
+      <div class="menu-container">
+        <a routerLink="/user-dashboard/home">
+          <div class="logo_title">
+            <mat-icon matTooltip="Home">home</mat-icon>
+            <h4>Home</h4>
+          </div>
+        </a>
+        <a routerLink="/mofa-admin/appointment">
+          <div class="logo_title">
+            <img src="../../../assets/image/audit_black.svg" alt="Dashboard" matTooltip="Appointment" />
+            <h4>Appointment</h4>
+          </div>
+        </a>
+        <div class="logo_title">
+          <img
+            src="../../../assets/image/accident_reporting_black.svg"
+            alt="Dashboard"
+            matTooltip="Reports"
+          />
+          <h4>Reports</h4>
+        </div>
+        <a routerLink="/mofa-admin/setting">
+          <div class="logo_title">
+            <mat-icon matTooltip="Setting">settings</mat-icon>
+            <h4>Setting</h4>
+          </div>
+        </a>
+        <a routerLink="/mofa-admin/change-password">
+          <div class="logo_title">
+            <img
+              src="../../../assets/image/user_lock_blcak.svg"
+              alt="Dashboard"
+              matTooltip="Change Password"
+            />
+            <h4>Change Password</h4>
+          </div>
+        </a>
+        <div class="logo_title" (click)="logout()">
+          <mat-icon matTooltip="Logout">logout</mat-icon>
+          <h4>Logout</h4>
+        </div>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </main>
+  
+  <app-loader *ngIf="showLoader"></app-loader>

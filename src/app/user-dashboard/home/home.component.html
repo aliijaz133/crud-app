@@ -1,0 +1,45 @@
+<main>
+    <app-header></app-header>
+  
+    <div class="main-container">
+      <div>
+        <app-sidebar></app-sidebar>
+      </div>
+      <div>
+        <div class="chart-container">
+          <div class="chart-graph">
+            <div>
+              <h1>Access Web3 Data</h1>
+  
+              <button class="btn btn-primary" (click)="requestAccounts()">
+                Request Ethereum Accounts
+              </button>
+  
+              <div *ngIf="userAddress">
+                <h2>User's Ethereum Address:</h2>
+                <p>{{ userAddress }}</p>
+              </div>
+  
+              <div *ngIf="userBalance">
+                <h2>User's Ethereum Balance:</h2>
+                <p>{{ userBalance }} ETH</p>
+              </div>
+            </div>
+          </div>
+          <div class="chart-graph">
+            <app-wallet-chart></app-wallet-chart>
+          </div>
+        </div>
+        <div class="chart-container m-10">
+          <div class="chart-graph">
+            <app-total-user>
+              
+            </app-total-user>
+          </div>
+          <div class="chart-graph">Canceled App</div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <app-loader *ngIf="showLoader"></app-loader>
+  

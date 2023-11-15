@@ -55,7 +55,7 @@ export class SigninComponent implements OnInit {
   
           this.toastr.success('Successfully Logged in.');
   
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/user-dashboard/home']);
         },
         (error) => {
           console.error('Server error:', error);
