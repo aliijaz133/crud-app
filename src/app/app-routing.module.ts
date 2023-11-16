@@ -25,8 +25,8 @@ const routes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "signup",
-    pathMatch: "full"
+    redirectTo: "user-dashboard",
+    pathMatch: "full",
   }
 ];
 
