@@ -3,6 +3,7 @@ import Web3 from 'web3';
 
 declare let window: any;  // Add this line to declare the window variable
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,4 +25,6 @@ export class Web3Service {
     console.log(this.web3);
     return this.web3;
   }
+
+  
 }

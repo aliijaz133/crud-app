@@ -45,16 +45,25 @@
               {{ userBalance }} ETH
             </p>
 
-            <button class="btn btn-outline-primary">Add Token</button>
+            <button class="btn btn-outline-primary" (click)="addToken()">
+              Add Token
+            </button>
           </div>
-          <div style="background-color: #726b6b; padding: 15px; color: white">
-            <div style="display: flex;justify-content: space-between;align-items: baseline;">
+          <div style="background-color: #e9e9e9; padding: 15px">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+              "
+            >
               <div>
                 <h3>Transaction</h3>
               </div>
               <div>
-                <button class="btn btn-primary" style="margin-right: 10px;">Send</button>
-                <button class="btn btn-primary">Deposit</button>
+                <button class="btn btn-primary" (click)="deposit()">
+                  Deposit
+                </button>
               </div>
             </div>
             <div *ngIf="userAddress">
@@ -66,6 +75,26 @@
               <h4>User's Ethereum Balance:</h4>
               <p>{{ userBalance }} ETH</p>
             </div>
+
+            <div *ngFor="let transaction of transactions">
+              <strong>Amount:</strong> {{ transaction.amount }}<br />
+              <strong>Status:</strong> {{ transaction.status }}<br />
+
+              <button
+                *ngIf="transaction.status === 'pending'"
+                (click)="acceptTransaction(transaction)"
+              >
+                Accept
+              </button>
+              <button
+                *ngIf="transaction.status === 'pending'"
+                (click)="rejectTransaction(transaction)"
+              >
+                Reject
+              </button>
+            </div>
+
+            <!-- Provide buttons to accept or reject the transaction -->
           </div>
         </div>
       </section>
