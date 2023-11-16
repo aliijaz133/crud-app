@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Web3Service } from 'src/app/service/web3.service';
-
+import { MatDialog, } from '@angular/material/dialog'
+import { DetailMetamaskComponent } from '../detail-metamask/detail-metamask.component';
 
 @Component({
   selector: 'app-meta-mask',
@@ -14,10 +15,15 @@ export class MetaMaskComponent implements OnInit {
   userAddress!: string;
   userBalance!: string;
   userName!: string;
-  userAvatar!: string;
+  userAvatar: string | null = null;
+  userMethod: any;
 
-  constructor(private toastr: ToastrService, private web3service: Web3Service) { }
+  constructor(private toastr: ToastrService, private web3service: Web3Service, public dialog: MatDialog) {
 
+  }
+  showDetail() {
+    this.dialog.open(DetailMetamaskComponent);
+  }
   async ngOnInit() {
     this.showLoader = true;
 

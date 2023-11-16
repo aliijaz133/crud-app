@@ -5,29 +5,70 @@
     <div>
       <app-sidebar></app-sidebar>
     </div>
-    <div>
-      <h4 style="margin: 10px; text-decoration: underline; font-weight: 500">
-        MetaMask Updating
-      </h4>
-      <div *ngIf="userAddress">
-        <h2>User's Ethereum Address:</h2>
-        <p>{{ userAddress }}</p>
-      </div>
+    <div style="display: flex; justify-content: center">
+      <section>
+        <img
+          src="../../../assets/image/metamask_fox.svg.png"
+          alt="MetaMask"
+          style="width: 100px"
+          class="meta-mask__img"
+          matTooltip="MetaMask"
+        />
+        <div class="metamask-detail">
+          <div class="meta-mask__profile">
+            <img
+              src="../../../assets/image/meta-mask-account.png"
+              alt="MetaMask Avatar"
+            />
+            <label style="font-weight: 500">CRUD-App</label>
+            <button
+              class="details-btn"
+              matTooltip="Get Details"
+              (click)="showDetail()"
+            >
+              Details
+            </button>
+            <p
+              style="
+                font-size: 1.2rem;
+                padding: 10px 50px;
+                background-color: #adaaaa;
+                color: #fff;
+                cursor: pointer;
+              "
+            >
+              <img
+                src="../../../assets/image/ethereum_logo.svg.png"
+                alt="Ethereum"
+                style="width: 20px"
+              />
+              {{ userBalance }} ETH
+            </p>
 
-      <div *ngIf="userBalance">
-        <h2>User's Ethereum Balance:</h2>
-        <p>{{ userBalance }} ETH</p>
-      </div>
+            <button class="btn btn-outline-primary">Add Token</button>
+          </div>
+          <div style="background-color: #726b6b; padding: 15px; color: white">
+            <div style="display: flex;justify-content: space-between;align-items: baseline;">
+              <div>
+                <h3>Transaction</h3>
+              </div>
+              <div>
+                <button class="btn btn-primary" style="margin-right: 10px;">Send</button>
+                <button class="btn btn-primary">Deposit</button>
+              </div>
+            </div>
+            <div *ngIf="userAddress">
+              <h4>User's Ethereum Address:</h4>
+              <p>{{ userAddress }}</p>
+            </div>
 
-      <div *ngIf="userName">
-        <h2>User's Ethereum Name:</h2>
-        <p>{{ userName }}</p>
-      </div>
-
-      <div *ngIf="userAvatar">
-        <h2>User's Ethereum Avatar:</h2>
-        <img [src]="userAvatar" alt="User Avatar" />
-      </div>
+            <div *ngIf="userBalance">
+              <h4>User's Ethereum Balance:</h4>
+              <p>{{ userBalance }} ETH</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
 </main>

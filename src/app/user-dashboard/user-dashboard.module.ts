@@ -17,6 +17,8 @@ import { LoaderComponent } from './loader/loader.component';
 import { DollarGraphComponent } from './dollar-graph/dollar-graph.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { MetaMaskComponent } from './meta-mask/meta-mask.component';
+import { DetailMetamaskComponent } from './detail-metamask/detail-metamask.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { MetaMaskComponent } from './meta-mask/meta-mask.component';
     LoaderComponent,
     DollarGraphComponent,
     PagenotfoundComponent,
-    MetaMaskComponent
+    MetaMaskComponent,
+    DetailMetamaskComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +41,8 @@ import { MetaMaskComponent } from './meta-mask/meta-mask.component';
     MatBadgeModule,
     MatButtonModule,
     MatMenuModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ]
 })
 export class UserDashboardModule { }
