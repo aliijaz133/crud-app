@@ -1,0 +1,28 @@
+main {
+    background-color: #f3f3f3;
+    height: 100vh;
+  }
+  
+  .main-container {
+    display:grid;
+    grid-template-columns: 250px auto;
+    column-gap: 20px;
+  }
+  
+
+  @media (max-width:600px) {
+    .main-container {
+      display: grid;
+      grid-template-columns: 60px auto;
+      column-gap: 20px;
+      height: auto;
+    }
+  }
+  
+  @media (max-width:850px) {
+    .chart-container {
+      display: flex;
+      flex-direction: column;
+      gap:20px;
+    }
+  }

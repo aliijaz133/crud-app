@@ -16,6 +16,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoaderComponent } from './loader/loader.component';
 import { DollarGraphComponent } from './dollar-graph/dollar-graph.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { MetaMaskComponent } from './meta-mask/meta-mask.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     WalletChartComponent,
     LoaderComponent,
     DollarGraphComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    MetaMaskComponent
   ],
   imports: [
     CommonModule,

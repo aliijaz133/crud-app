@@ -3,8 +3,6 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
-/* Chart code */
-// Themes begin
 am4core.useTheme(am4themes_animated);
 
 @Component({
@@ -32,151 +30,73 @@ export class DollarGraphComponent implements OnInit {
   }
 
   dollarFun() {
-    let chart = am4core.create("dollarGraph", am4charts.SankeyDiagram);
+    let chart = am4core.create("dollarGraph", am4charts.XYChart);
 
-    chart.data = [
-      // these are just for color, as properties are taken from data object where the name is first mentioned.
-      { from: "Cash in the U.S.", color: "#f47b20" },
-      { from: "Cash Overseas", color: "#000000" },
+    chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
 
-      { from: "Source", to: "Total non financial companies", value: 1768, color: "#f47b20", labelText: "[font-size:1.5em]2016 BREAKDOWN OF\nTHE U.S.CORPORATE CASH PILE\n\n[/]NON-FINANCIAL COMPANIES \n [bold]$1,768 Trillion[/b]", zIndex: 100 },
+    // Title
+    let title = chart.titles.create();
+    title.text = "Biggest U.S. retailers by 2018 revenue";
+    title.fontSize = 20;
+    title.marginBottom = 20;
 
-      { from: "Total non financial companies", to: "Non-tech companies", value: 907, color: "#f47b20", labelText: "NON-TECH COMPANIES\n [bold]$907 Billion[/]" },
-      { from: "Total non financial companies", to: "Tech companies", value: 861, color: "#f47b20", labelText: "TECH COMPANIES\n [bold]861 Billion[/]" },
+    // Set format
+    chart.numberFormatter.numberFormat = "'[font-size: 10]US$[/] [bold]'#.0B";
 
-      { from: "Non-tech companies", to: "Cash in the U.S.", value: 324, color: "#f47b20", zIndex: 101 },
-      { from: "Non-tech companies", to: "Cash Overseas", value: 584, color: "#f47b20" },
+    // Create axes
+    let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+    categoryAxis.renderer.grid.template.location = 0;
+    categoryAxis.renderer.labels.template.disabled = true;
+    categoryAxis.dataFields.category = "category";
 
-      { from: "Tech companies", to: "Rest of tech", value: 274, color: "#f47b20", labelText: "REST OF TECH\n[bold]$274 Billion[/]" },
-      { from: "Tech companies", to: "Top 5 tech companies", value: 587, color: "#f47b20", labelText: "TOP 5 TECH COMPANIES\n[bold]$587 Billion[/]" },
+    let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 
-      { from: "Rest of tech", to: "Cash in the U.S.", value: 74, color: "#f47b20", zIndex: 100 },
-      { from: "Rest of tech", to: "Cash Overseas", value: 200, color: "#f47b20" },
+    // Set data
+    chart.data = [{
+      "category": "",
+      "Walmart": 387.66,
+      "Amazon.com": 120.93,
+      "The Kroger Co.": 119.70,
+      "Costco": 101.43,
+      "Walgreens Boots Alliance": 98.39,
+      "The Home Depot": 97.27,
+      "CVS Health Corporation": 83.79,
+      "Target": 74.48,
+      "Lowe's Companies": 64.09,
+      "Albertsons Companies": 59.71
+    }];
 
-      { from: "Top 5 tech companies", to: "Joytechs", value: 67, color: "#f47b20" },
-      { from: "Joytechs", to: "Cash in the U.S.", value: 10, color: "#f47b20" },
-      { from: "Joytechs", to: "Cash Overseas", value: 57, color: "#f47b20", labelText: "JOYTECHS [bold]$67[/]B", labelLocation: 0, labelRotation: 0 },
-
-      { from: "Top 5 tech companies", to: "Fireex", value: 68, color: "#f47b20" },
-      { from: "Fireex", to: "Cash in the U.S.", value: 8, color: "#f47b20" },
-      { from: "Fireex", to: "Cash Overseas", value: 60, color: "#f47b20", labelText: "FIREEX [bold]$68[/]B", labelLocation: 0, labelRotation: 0 },
-
-      { from: "Top 5 tech companies", to: "Globalworld", value: 85, color: "#f47b20" },
-      { from: "Globalworld", to: "Cash in the U.S.", value: 10, color: "#f47b20" },
-      { from: "Globalworld", to: "Cash Overseas", value: 75, color: "#f47b20", labelText: "GLOBALWORLD [bold]$85[/]B", labelLocation: 0, labelRotation: 0 },
-
-      { from: "Top 5 tech companies", to: "Betagate", value: 115, color: "#f47b20" },
-      { from: "Betagate", to: "Cash in the U.S.", value: 10, color: "#f47b20" },
-      { from: "Betagate", to: "Cash Overseas", value: 105, color: "#f47b20", labelText: "BETAGATE [bold]$115[/]B", labelLocation: 0, labelRotation: 0 },
-
-      { from: "Top 5 tech companies", to: "Apexi", value: 253, color: "#f47b20" },
-      { from: "Apexi", to: "Cash in the U.S.", value: 23, color: "#f47b20" },
-      { from: "Apexi", to: "Cash Overseas", value: 230, color: "#f47b20", labelText: "APEXI [bold]$253[/]B", labelLocation: 0, labelRotation: 0 },
-
-      { from: "Cash in the U.S.", color: "#f47b20", labelRotation: -90, labelText: "CASH IN THE U.S.\n[bold]$460 BILLION", labelLocation: 0, value: 460, zIndex: 102 },
-      { from: "Cash Overseas", color: "#000000", labelText: "[#f47b20 font-size:1.3em]CASH OVERSEAS\n[bold #f47b20 font-size:1.3em]$1,31 TRILLION", labelLocation: 0, labelRotation: -90, value: 1310 }
-    ];
-
-    chart.paddingRight = 30;
-    chart.paddingTop = 80;
-    chart.paddingBottom = 80;
-    chart.nodeAlign = "bottom";
-
-    chart.minNodeSize = 0.001;
-
-    chart.dataFields.fromName = "from";
-    chart.dataFields.toName = "to";
-    chart.dataFields.value = "value";
-    chart.dataFields.color = "color";
-
-    let linkTemplate = chart.links.template;
-    linkTemplate.colorMode = "gradient";
-    linkTemplate.fillOpacity = 1;
-    linkTemplate.strokeOpacity = 1;
-
-    linkTemplate.cursorOverStyle = am4core.MouseCursorStyle.pointer;
-    linkTemplate.readerTitle = "drag me!";
-    linkTemplate.showSystemTooltip = true;
-    linkTemplate.tooltipText = "";
-    linkTemplate.propertyFields.zIndex = "zIndex";
-    linkTemplate.tension = 0.6;
-
-    chart.nodes.template.width = 0;
-    chart.nodes.template.nameLabel.disabled = true;
-    chart.nodes.template.draggable = true;
-    chart.nodes.template.inert = true;
-    chart.nodes.template.togglable = false;
-
-    // making links draggable
-    linkTemplate.events.on("down", function (event) {
-      let fromNode = event.target.dataItem.fromNode;
-      let toNode = event.target.dataItem.toNode;
-
-      let distanceToFromNode = am4core.math.getDistance(event.pointer.point, { x: fromNode.pixelX, y: fromNode.pixelY });
-      let distanceToToNode = Infinity;
-      if (toNode) {
-        distanceToToNode = am4core.math.getDistance(event.pointer.point, { x: toNode.pixelX, y: toNode.pixelY });
+    // Series
+    let data = chart.data[0];
+    for (var key in data) {
+      if (data.hasOwnProperty(key) && key != "category") {
+        let series = chart.series.push(new am4charts.CurvedColumnSeries());
+        series.dataFields.categoryX = "category";
+        series.dataFields.valueY = key;
+        series.name = key;
+        series.tooltipText = "{name}: {valueY.value}";
+        series.columns.template.strokeWidth = 2;
+        series.columns.template.strokeOpacity = 1;
+        series.columns.template.fillOpacity = 0;
+        series.columns.template.width = am4core.percent(100);
+        series.clustered = false;
       }
-
-      if (distanceToFromNode < distanceToToNode) {
-        fromNode.dragStart(event.pointer);
-      }
-      else {
-        toNode.dragStart(event.pointer);
-      }
-    })
-
-
-    // add labels
-    let labelBullet = chart.links.template.bullets.push(new am4charts.LabelBullet());
-    labelBullet.label.propertyFields.text = "labelText";
-    labelBullet.propertyFields.locationX = "labelLocation";
-    labelBullet.propertyFields.rotation = "labelRotation";
-    labelBullet.label.horizontalCenter = "left";
-    labelBullet.label.textAlign = "start";
-    labelBullet.label.dx = -50;
-
-    // add labels which will animate
-    let bullet = chart.links.template.bullets.push(new am4charts.LabelBullet());
-    bullet.label.text = "${value}";
-    bullet.label.fill = am4core.color("#ffffff");
-    bullet.label.isMeasured = false;
-    bullet.isMeasured = false;
-
-    // create animations
-    chart.events.on("inited", function () {
-      for (var i = 0; i < chart.links.length; i++) {
-        let link:any = chart.links.getIndex(i);
-        let bullet = link.bullets.getIndex(1);
-        bullet.opacity = 0;
-
-        if (link.dataItem.toNode && link.dataItem.value > 10) {
-
-          bullet.label.fontSize = link.dataItem.value / 10;
-          firstHalfAnimation(bullet);
-        }
-        else {
-          link.bullets.removeValue(bullet);
-        }
-      }
-    })
-
-    function firstHalfAnimation(bullet:any) {
-      let duration = 6000 * Math.random() + 3000;
-      let animation = bullet.animate([{ property: "locationX", from: 0.2, to: 0.5 }, { property: "opacity", from: 0, to: 0.3 }], duration)
-      animation.events.on("animationended", function (event:any) {
-        secondHalfAnimation(event.target.object, duration);
-      })
     }
 
-    function secondHalfAnimation(bullet:any, duration:any) {
-      let animation = bullet.animate([{ property: "locationX", from: 0.5, to: 0.8 }, { property: "opacity", from: 0.3, to: 0 }], duration)
-      animation.events.on("animationended", function (event:any) {
-        setTimeout(function () {
-          firstHalfAnimation(event.target.object)
-        }, Math.random() * 5000);
-      })
-    }
+    // Cursor
+    chart.cursor = new am4charts.XYCursor();
+    chart.cursor.maxTooltipDistance = 10;
+
+    // Legend
+    chart.legend = new am4charts.Legend();
+    chart.legend.fontSize = 12;
+    chart.legend.position = "right";
+    chart.legend.valign = "top";
+    chart.legend.marginTop = 0;
+    chart.legend.labels.template.width = 130;
+    chart.legend.labels.template.truncate = true;
+    chart.legend.valueLabels.template.text = "{valueY.close}"
+    chart.legend.valueLabels.template.fontSize = 12;
   }
 
 }

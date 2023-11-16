@@ -65,4 +65,7 @@ export class HomeComponent implements OnInit {
 
     this.showLoader = false;
   }
+
+
+  
 }

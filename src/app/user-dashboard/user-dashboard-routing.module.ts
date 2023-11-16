@@ -4,6 +4,7 @@ import { AuthGuard } from '../service/auth-guard.service';
 import { HomeComponent } from './home/home.component';
 import { DollarGraphComponent } from './dollar-graph/dollar-graph.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { MetaMaskComponent } from './meta-mask/meta-mask.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,12 @@ const routes: Routes = [
     component: DollarGraphComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: "meta-mask",
+    component: MetaMaskComponent,
+    canActivate: [AuthGuard]
+  }
+  ,
   {
     path: "**",
     component: PagenotfoundComponent
