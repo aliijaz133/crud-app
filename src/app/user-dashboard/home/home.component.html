@@ -17,7 +17,7 @@
               [class.btn-primary]="!isConnected"
               (click)="toggleConnection()"
             >
-              {{ isConnected ? "Disconnect" : "Connect" }}
+              {{ isConnected ? "MetaMask Disconnect" : "MetaMask Connect" }}
             </button>
 
             <div *ngIf="isConnected">

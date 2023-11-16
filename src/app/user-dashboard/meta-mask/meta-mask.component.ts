@@ -53,7 +53,7 @@ export class MetaMaskComponent implements OnInit {
       const balance = await web3.eth.getBalance(this.userAddress);
       this.userBalance = web3.utils.fromWei(balance, 'ether');
 
-      this.toastr.success('User Balance: ' + this.userBalance);
+      // this.toastr.success('User Balance: ' + this.userBalance);
     } catch (error) {
       console.error('Error requesting accounts:', error);
       this.toastr.error('Error requesting account.');
