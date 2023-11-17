@@ -34,6 +34,10 @@ main {
   mat-icon {
     cursor: pointer;
   }
+
+  h3::before {
+    counter-increment: inherit;
+  }
  
   @media (max-width: 600px) {
     .main-container {

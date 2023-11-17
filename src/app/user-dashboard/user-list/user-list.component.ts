@@ -4,13 +4,24 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { ToastrService } from 'ngx-toastr';
 import { HttpResponse } from '@angular/common/http';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
+  styleUrls: ['./user-list.component.scss'],
+  animations: [
+    trigger('counter', [
+      transition(':increment', [
+        style({ transform: 'scale(0.8)', opacity: 0 }),
+        animate('500ms ease-out', style({ transform: 'scale(1)', opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 export class UserListComponent implements OnInit {
+
+  animationState: number = 0;
 
   userData!: any[];
 
@@ -36,22 +47,24 @@ export class UserListComponent implements OnInit {
     this.http.get('http://localhost:3000/api/user-dashboard/user-list').subscribe(
       (response: any) => {
         this.userData = response;
+        this.animationState++;
       },
       (error) => {
         console.error('Error fetching user data:', error);
       }
     );
+
   }
 
-  editUser(user: any): void {
+  editUser(User: any): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      data: user,
+      data: User,
       disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.http.put(`http://localhost:3000/api/user-dashboard/user-list/${user._id}`, result)
+        this.http.put(`http://localhost:3000/api/user-dashboard/user-list/${User._id}`, result)
           .subscribe(() => {
             console.log('User updated successfully');
             this.getUserData();

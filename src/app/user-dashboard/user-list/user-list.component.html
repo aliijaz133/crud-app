@@ -6,27 +6,51 @@
       <app-sidebar></app-sidebar>
     </div>
     <div>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: aquamarine;
+        "
+      >
+        <h3
+          *ngIf="userData && userData.length > 0"
+          [@counter]="animationState"
+          style="padding-top: 20px; font-weight: 500"
+        >
+          Total User: {{ userData.length | number }}
+        </h3>
+      </div>
       <!-- User Data Table -->
-     <div class="table-container">
+      <div class="table-container">
         <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Edit</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody *ngFor="let user of userData; let index">
-                <tr>
-                    <td>{{user.userName}}</td>
-                    <td>{{user.userEmail}}</td>
-                    <td><mat-icon style="color: #0000ff;" (click)="editUser(user)">edit</mat-icon></td>
-                    <td><mat-icon style="color:#ff0000;" (click)="deleteCurrent(index)">delete</mat-icon></td>
-                </tr>
-            </tbody>
-          </table>
-     </div>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let user of userData; let index">
+            <tr>
+              <td>{{ user.userName }}</td>
+              <td>{{ user.userEmail }}</td>
+              <td>
+                <mat-icon style="color: #0000ff" (click)="editUser(user)"
+                  >edit</mat-icon
+                >
+              </td>
+              <td>
+                <mat-icon style="color: #ff0000" (click)="deleteCurrent(index)"
+                  >delete</mat-icon
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </main>
