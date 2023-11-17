@@ -6,14 +6,27 @@
       <app-sidebar></app-sidebar>
     </div>
     <div>
-      <div *ngIf="userData">
-        <h2>User Name:</h2>
-        <p>{{ userData.userName }}</p>
-
-        <h2>User Email:</h2>
-        <p>{{ userData.userEmail }}</p>
-      </div>
-      
+      <!-- User Data Table -->
+     <div class="table-container">
+        <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let user of userData; let index">
+                <tr>
+                    <td>{{user.userName}}</td>
+                    <td>{{user.userEmail}}</td>
+                    <td><mat-icon style="color: #0000ff;" (click)="editUser(user)">edit</mat-icon></td>
+                    <td><mat-icon style="color:#ff0000;" (click)="deleteCurrent(index)">delete</mat-icon></td>
+                </tr>
+            </tbody>
+          </table>
+     </div>
     </div>
   </div>
 </main>

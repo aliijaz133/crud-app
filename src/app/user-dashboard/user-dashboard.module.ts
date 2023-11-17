@@ -21,8 +21,12 @@ import { DetailMetamaskComponent } from './detail-metamask/detail-metamask.compo
 import { MatDialogModule } from '@angular/material/dialog';
 import { UserListComponent } from './user-list/user-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,8 @@ import { FormsModule } from '@angular/forms';
     PagenotfoundComponent,
     MetaMaskComponent,
     DetailMetamaskComponent,
-    UserListComponent
+    UserListComponent,
+    EditDialogComponent
   ],
   imports: [
     CommonModule,
@@ -49,8 +54,12 @@ import { FormsModule } from '@angular/forms';
     MatTooltipModule,
     MatDialogModule,
     HttpClientModule,
-
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class UserDashboardModule { }

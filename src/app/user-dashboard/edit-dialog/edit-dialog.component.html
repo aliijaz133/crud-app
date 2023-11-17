@@ -1,0 +1,28 @@
+<main>
+  <h3 style="font-weight: 500">Edit User</h3>
+  <div class="main-container">
+    <div>
+      <form [formGroup]="editForm" style="width: fit-content">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="User Name" formControlName="userName" />
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="User Email"
+            formControlName="userEmail"
+          />
+          <mat-icon matSuffix>mail</mat-icon>
+        </mat-form-field>
+      </form>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancelClick()">Cancel</button>
+      <button mat-button (click)="onSaveClick()">Save</button>
+    </div>
+  </div>
+</main>

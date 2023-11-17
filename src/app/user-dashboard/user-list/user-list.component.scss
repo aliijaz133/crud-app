@@ -1,5 +1,6 @@
 main {
     background-color: #f3f3f3;
+    height: 100vh;
   }
   
   .main-container {
@@ -7,7 +8,33 @@ main {
     grid-template-columns: 250px auto;
   }
 
-  
+  .table-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+
+  table {
+    background-color: #ffffff;
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    width: 500px;
+  }
+
+  th {
+    border-bottom: 2px solid #000;
+  }
+
+  td {
+    border: 1px solid #000;
+  }
+
+  mat-icon {
+    cursor: pointer;
+  }
+ 
   @media (max-width: 600px) {
     .main-container {
       display: grid;
