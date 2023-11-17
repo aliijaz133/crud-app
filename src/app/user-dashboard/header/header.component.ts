@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { AuthService } from 'src/app/service/auth.service';
-AuthService
 
 @Component({
   selector: 'app-header',
@@ -30,7 +29,7 @@ export class HeaderComponent {
   }
   ngOnInit(): void {
 
-    this.userName = this.authService.getUserName();
+    this.userName = this.authService.getUserName(this.userName);
 
     this.showLoader = true;
 

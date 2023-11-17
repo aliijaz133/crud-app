@@ -14,7 +14,7 @@ export class AuthService {
     return !!localStorage.getItem(this.USER_STORAGE_KEY);
   }
 
-  getUserName(): string | null {
+  getUserName(userName: string) {
     return localStorage.getItem(this.USERNAME_STORAGE_KEY);
   }
 
