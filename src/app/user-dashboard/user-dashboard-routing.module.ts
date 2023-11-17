@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { DollarGraphComponent } from './dollar-graph/dollar-graph.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { MetaMaskComponent } from './meta-mask/meta-mask.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,11 @@ const routes: Routes = [
   {
     path: "meta-mask",
     component: MetaMaskComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "user-list",
+    component: UserListComponent,
     canActivate: [AuthGuard]
   }
   ,

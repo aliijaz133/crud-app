@@ -19,6 +19,10 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { MetaMaskComponent } from './meta-mask/meta-mask.component';
 import { DetailMetamaskComponent } from './detail-metamask/detail-metamask.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { UserListComponent } from './user-list/user-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +36,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     DollarGraphComponent,
     PagenotfoundComponent,
     MetaMaskComponent,
-    DetailMetamaskComponent
+    DetailMetamaskComponent,
+    UserListComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +47,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule,
     MatMenuModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule,
+
+    FormsModule
   ]
 })
 export class UserDashboardModule { }

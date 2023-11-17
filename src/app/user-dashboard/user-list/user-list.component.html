@@ -1,0 +1,20 @@
+<main>
+  <app-header></app-header>
+
+  <div class="main-container">
+    <div>
+      <app-sidebar></app-sidebar>
+    </div>
+    <div>
+      <div *ngIf="userData">
+        <h2>User Name:</h2>
+        <p>{{ userData.userName }}</p>
+
+        <h2>User Email:</h2>
+        <p>{{ userData.userEmail }}</p>
+      </div>
+      
+    </div>
+  </div>
+</main>
+<app-loader *ngIf="showLoader"></app-loader>
