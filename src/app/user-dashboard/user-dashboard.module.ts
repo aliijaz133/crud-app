@@ -5,9 +5,6 @@ import { UserDashboardRoutingModule } from './user-dashboard-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HomeComponent } from './home/home.component';
-import { GraphComponent } from './time-graph/graph/graph.component';
-import { TotalUserComponent } from './time-graph/total-user/total-user.component';
-import { WalletChartComponent } from './time-graph/wallet-chart/wallet-chart.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
@@ -33,9 +30,6 @@ import { MatInputModule } from '@angular/material/input';
     HeaderComponent,
     SidebarComponent,
     HomeComponent,
-    GraphComponent,
-    TotalUserComponent,
-    WalletChartComponent,
     LoaderComponent,
     DollarGraphComponent,
     PagenotfoundComponent,

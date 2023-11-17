@@ -1,5 +1,6 @@
 main {
     background-color: #f3f3f3;
+    height: 100vh;
   }
   
   .main-container {
@@ -26,10 +27,14 @@ main {
   }
   
   @media (max-width:600px) {
+
+    main{
+      height: 100vh;
+    }
+
     .main-container {
       display: grid;
       grid-template-columns: 60px auto;
-      height: auto;
     }
   }
   
