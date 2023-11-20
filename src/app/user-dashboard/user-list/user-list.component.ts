@@ -56,31 +56,37 @@ export class UserListComponent implements OnInit {
 
   }
 
-  editUser(User: any): void {
+  editUser(user: any): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      data: User,
+      data: user,
       disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.http.put(`http://localhost:3000/api/user-dashboard/user-list/${User._id}`, result)
-          .subscribe(() => {
-            console.log('User updated successfully');
-            this.getUserData();
-          });
+        this.http.put(`http://localhost:3000/api/user-dashboard/user-list/${user._id}`, result)
+          .subscribe(
+            () => {
+              console.log('User updated successfully');
+              this.getUserData();
+            },
+            (error) => {
+              console.error('Error updating user:', error);
+            }
+          );
       }
     });
   }
 
-  deleteCurrent(index: number) {
 
-    this.toastr.error("Internal server error","500 Error")
-    const currentUser = this.userData[index];
-    this.http.delete(`http://localhost:3000/api/user-dashboard/user-list/${currentUser._id}`, { observe: 'response' }).subscribe(
+  deleteCurrent(index: any) {
+
+    this.toastr.error("Internal server error", "500 Error")
+    const user = this.userData[index];
+    this.http.delete(`http://localhost:3000/api/user-dashboard/user-list/${user._id}`, { observe: 'response' }).subscribe(
       (response: HttpResponse<any>) => {
         if (response.status === 200) {
-          console.log("This User is Deleted: ", currentUser);
+          console.log("This User is Deleted: ", user);
           this.toastr.info("This user is deleted.");
           this.getUserData();
         } else {

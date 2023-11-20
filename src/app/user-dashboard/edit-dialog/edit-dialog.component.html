@@ -30,11 +30,27 @@
           />
           <mat-icon matSuffix>mail</mat-icon>
         </mat-form-field>
+        <div
+          *ngIf="
+            editForm.get('userEmail')?.touched &&
+            editForm.get('userEmail')?.invalid
+          "
+          class="invalid-field"
+        >
+          <div *ngIf="editForm.get('userEmail')?.hasError('required')">
+            This field is required.
+          </div>
+          <div *ngIf="editForm.get('userEmail')?.hasError('email')">
+            Email format is invalid.
+          </div>
+        </div>
       </form>
     </div>
     <div mat-dialog-actions>
       <button mat-button (click)="onCancelClick()">Cancel</button>
-      <button mat-button (click)="onSaveClick()">Save</button>
+      <button mat-button (click)="onSaveClick()" [disabled]="editForm.invalid">
+        Save
+      </button>
     </div>
   </div>
 </main>

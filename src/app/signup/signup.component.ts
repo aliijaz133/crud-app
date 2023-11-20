@@ -62,6 +62,7 @@ export class SignupComponent implements OnInit {
           (response) => {
             console.log('Server response:', response);
             this.toastr.success("Successfully Registered.")
+            this.router.navigate(['/signin']);
           },
           (error) => {
             console.error('Server error:', error);
