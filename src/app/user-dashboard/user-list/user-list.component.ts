@@ -75,7 +75,7 @@ export class UserListComponent implements OnInit {
 
   deleteCurrent(index: number) {
 
-    this.toastr.error("Internal server error","505 Error")
+    this.toastr.error("Internal server error","500 Error")
     const currentUser = this.userData[index];
     this.http.delete(`http://localhost:3000/api/user-dashboard/user-list/${currentUser._id}`, { observe: 'response' }).subscribe(
       (response: HttpResponse<any>) => {

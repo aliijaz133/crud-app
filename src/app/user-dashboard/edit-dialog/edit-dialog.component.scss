@@ -1,9 +1,21 @@
 .main-container {
-    padding: 10px;
+  padding: 10px;
 }
 
 form {
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field > div:nth-child(odd) {
+  display: none;
+}
+
+ng-reflect-ng-switch {
+  display: none !important;
+}
+
+.invalid-field {
+  color: red;
 }

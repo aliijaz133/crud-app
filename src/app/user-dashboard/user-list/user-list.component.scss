@@ -14,15 +14,7 @@ main {
     margin-top: 10px;
   }
 
-
-  table {
-    background-color: #ffffff;
-    border-bottom: 1px solid #000;
-    border-left: 1px solid #000;
-    border-right: 1px solid #000;
-    width: 500px;
-  }
-
+ 
   th {
     border-bottom: 2px solid #000;
   }
@@ -47,3 +39,8 @@ main {
     }
   }
   
+  @media (min-width:1000px) {
+    .table {
+      width:800px !important;
+    }
+  }

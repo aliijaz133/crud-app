@@ -16,6 +16,8 @@ import { LoaderComponent } from './loader/loader.component';
 import { SigninComponent } from './signin/signin.component';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
 
 registerLocaleData(en);
 
@@ -40,6 +42,7 @@ registerLocaleData(en);
   providers: [
     provideAnimations(),
     provideToastr(),
+    { provide: NZ_I18N, useValue: en_US },
   ],
   bootstrap: [AppComponent]
 })
