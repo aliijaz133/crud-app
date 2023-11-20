@@ -101,14 +101,10 @@ export class MetaMaskComponent implements OnInit {
 
   deposit() {
     const web3 = new Web3(ethereum);
-
-
     const fromAddress = '0xe392223890ade3d20587f53851f6ef3ed38087fe';
     const toAddress = '0x9c14a874C776c2d58FB54Dcf5519A0f50655fa1b';
-
     const amountInEth = 1;
     const amountInWei = web3.utils.toWei(amountInEth.toString(), 'ether');
-
     const transactionObject = {
       from: fromAddress,
       to: toAddress,

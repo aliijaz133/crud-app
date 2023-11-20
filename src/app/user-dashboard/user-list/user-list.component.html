@@ -9,11 +9,22 @@
       <div
         style="
           display: flex;
-          justify-content: center;
+          justify-content: space-around;
+          flex-wrap: wrap;
           align-items: center;
           background-color: aquamarine;
         "
+        class="f-w"
       >
+        <input
+          type="text"
+          id="search"
+          class="form-control me-2"
+          style="width: auto"
+          placeholder="Search..."
+          [(ngModel)]="searchQuery"
+          (input)="applyFilter()"
+        />
         <h3
           *ngIf="userData && userData.length > 0"
           [@counter]="animationState"

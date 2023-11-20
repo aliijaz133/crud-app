@@ -28,6 +28,8 @@ export class UserListComponent implements OnInit {
 
   userData!: any[];
 
+  searchQuery: string = '';
+
   showLoader = false;
 
   private url: string = "http://localhost:3000/api/user-dashboard/user-list";
@@ -94,7 +96,9 @@ export class UserListComponent implements OnInit {
 
 
   deleteUser(userId: string) {
-    const dialogRef = this.dialog.open(DeleteConfirmationComponent);
+    const dialogRef = this.dialog.open(DeleteConfirmationComponent,{
+      disableClose : true,
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -112,4 +116,19 @@ export class UserListComponent implements OnInit {
       }
     });
   }
+
+  applyFilter() {
+    const filterValue = this.searchQuery.trim().toLowerCase();
+  
+    if (filterValue === '') {
+      this.getUserData();
+    } else {
+      this.userData = this.userData.filter(user =>
+        user.userName.toLowerCase().includes(filterValue) ||
+        user.userEmail.toLowerCase().includes(filterValue)
+      );
+    }
+  }
+  
+  
 }
