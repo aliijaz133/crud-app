@@ -24,7 +24,7 @@
       </div>
       <!-- User Data Table -->
       <div class="table-container">
-        <table class="table">
+        <table class="table" *ngIf="userData !== null">
           <thead class="table-dark">
             <tr>
               <th>Name</th>
@@ -38,12 +38,20 @@
               <td>{{ user.userName }}</td>
               <td>{{ user.userEmail }}</td>
               <td>
-                <mat-icon style="color: #0000ff" (click)="editUser(user)"
+                <mat-icon
+                  style="color: #0000ff"
+                  (click)="
+                    updateUser(user._id, {
+                      userName: user.updatedUserName,
+                      userEmail: user.updatedUserEmail
+                    })
+                  "
+                  (click)="editUser(user)"
                   >edit</mat-icon
                 >
               </td>
               <td>
-                <mat-icon style="color: #ff0000" (click)="deleteCurrent(index)"
+                <mat-icon style="color: #ff0000" (click)="deleteUser(user._id)"
                   >delete</mat-icon
                 >
               </td>

@@ -14,12 +14,12 @@ export class EditDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public userId: any,
     private fb: FormBuilder
   ) {
     this.editForm = this.fb.group({
-      userName: [data.userName, Validators.required],
-      userEmail: [data.userEmail, [Validators.required, Validators.email]],
+      userName: [userId.userName, Validators.required],
+      userEmail: [userId.userEmail, [Validators.required, Validators.email]],
     });
   }
 

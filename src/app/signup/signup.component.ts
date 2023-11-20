@@ -60,7 +60,7 @@ export class SignupComponent implements OnInit {
       this.http.post('http://localhost:3000/api/signup', userData)
         .subscribe(
           (response) => {
-            console.log('Server response:', response);
+            // console.log('Server response:', response);
             this.toastr.success("Successfully Registered.")
             this.router.navigate(['/signin']);
           },

@@ -5,6 +5,9 @@ import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { ToastrService } from 'ngx-toastr';
 import { HttpResponse } from '@angular/common/http';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { UserService } from 'src/app/service/user.service';
+import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
+
 
 @Component({
   selector: 'app-user-list',
@@ -27,7 +30,10 @@ export class UserListComponent implements OnInit {
 
   showLoader = false;
 
-  constructor(private http: HttpClient, public dialog: MatDialog, private toastr: ToastrService, private ngzone: NgZone) { }
+  private url: string = "http://localhost:3000/api/user-dashboard/user-list";
+
+
+  constructor(private http: HttpClient, public dialog: MatDialog, private toastr: ToastrService, private ngzone: NgZone, private userService: UserService) { }
 
   ngOnInit(): void {
 
@@ -44,10 +50,11 @@ export class UserListComponent implements OnInit {
 
 
   getUserData(): void {
-    this.http.get('http://localhost:3000/api/user-dashboard/user-list').subscribe(
+    this.http.get(this.url).subscribe(
       (response: any) => {
         this.userData = response;
         this.animationState++;
+        // console.log('here is user data:::>,', this.userData);
       },
       (error) => {
         console.error('Error fetching user data:', error);
@@ -56,48 +63,53 @@ export class UserListComponent implements OnInit {
 
   }
 
-  editUser(user: any): void {
+  editUser(users: any): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      data: user,
-      disableClose: true
+      data: users,
+      disableClose: true,
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.http.put(`http://localhost:3000/api/user-dashboard/user-list/${user._id}`, result)
-          .subscribe(
-            () => {
-              console.log('User updated successfully');
-              this.getUserData();
-            },
-            (error) => {
-              console.error('Error updating user:', error);
-            }
-          );
+        this.updateUser(users._id, result);
+        this.toastr.success("This user data is successfully updated.")
       }
     });
   }
 
+  updateUser(userId: string, newData: { userName?: string, userEmail?: string }) {
+    this.userService.updateUser(userId, newData).subscribe(
+      () => {
+        // console.log(`User with ID ${userId} updated successfully.`);
 
-  deleteCurrent(index: any) {
-
-    this.toastr.error("Internal server error", "500 Error")
-    const user = this.userData[index];
-    this.http.delete(`http://localhost:3000/api/user-dashboard/user-list/${user._id}`, { observe: 'response' }).subscribe(
-      (response: HttpResponse<any>) => {
-        if (response.status === 200) {
-          console.log("This User is Deleted: ", user);
-          this.toastr.info("This user is deleted.");
-          this.getUserData();
-        } else {
-          console.error('Unexpected response status:', response.status);
-          this.toastr.error('Unexpected response status. Please try again.');
-        }
+        this.getUserData();
       },
       (error) => {
-        console.error('Error deleting user:', error);
-        this.toastr.error('Failed to delete user. Please try again.');
+        // console.error(`Error updating user with ID ${userId}:`, error);
+        this.toastr.error("Updating Error.")
       }
     );
+  }
+
+
+
+  deleteUser(userId: string) {
+    const dialogRef = this.dialog.open(DeleteConfirmationComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.userService.deleteUser(userId).subscribe(
+          () => {
+            // console.log(`User with ID ${userId} deleted.`);
+            this.getUserData();
+            this.toastr.success("This account is successfully deleted.");
+          },
+          (error) => {
+            // console.error(`Error deleting user with ID ${userId}:`, error);
+            this.toastr.error("Deleting Error.");
+          }
+        );
+      }
+    });
   }
 }

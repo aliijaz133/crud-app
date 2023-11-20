@@ -24,6 +24,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MatInputModule } from '@angular/material/input';
     MetaMaskComponent,
     DetailMetamaskComponent,
     UserListComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    DeleteConfirmationComponent
   ],
   imports: [
     CommonModule,
