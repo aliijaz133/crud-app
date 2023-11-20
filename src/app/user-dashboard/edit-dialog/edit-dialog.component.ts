@@ -1,14 +1,17 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { set } from 'mongoose';
 
 @Component({
   selector: 'app-edit-dialog',
   templateUrl: './edit-dialog.component.html',
   styleUrls: ['./edit-dialog.component.scss']
 })
-export class EditDialogComponent {
+export class EditDialogComponent implements OnInit {
   editForm: FormGroup;
+
+  showLoader = false;
 
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
@@ -21,10 +24,21 @@ export class EditDialogComponent {
     });
   }
 
+  ngOnInit(): void {
+
+    this.showLoader = true;
+
+    setTimeout(() => {
+      this.showLoader = false;
+    }, 1000);
+
+  }
+
   onSaveClick(): void {
     if (this.editForm.valid) {
       this.dialogRef.close(this.editForm.value);
     }
+    this.showLoader = true;
   }
 
   onCancelClick(): void {
