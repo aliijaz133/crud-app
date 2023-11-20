@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { ToastrService } from 'ngx-toastr';
-import { HttpResponse } from '@angular/common/http';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { UserService } from 'src/app/service/user.service';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';

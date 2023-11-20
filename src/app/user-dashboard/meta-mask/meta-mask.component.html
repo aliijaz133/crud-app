@@ -68,7 +68,7 @@
             </div>
             <div *ngIf="userAddress">
               <h4>User's Ethereum Address:</h4>
-              <p>{{ userAddress }}</p>
+              <p>{{ userAddress | tokenFormat}}</p>
             </div>
 
             <div *ngIf="userBalance">

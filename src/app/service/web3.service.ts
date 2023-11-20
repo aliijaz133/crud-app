@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import Web3 from 'web3';
+import { AuthService } from './auth.service';
 
 declare let window: any;
 
@@ -9,14 +10,17 @@ declare let window: any;
 export class Web3Service {
   web3: Web3;
 
-  constructor() {
+  private token = "5c5f653e31b94e6092470d3ac36956b7";
+
+  constructor(private authService: AuthService) {
+
     if (typeof window.ethereum !== 'undefined') {
 
       this.web3 = new Web3(window.ethereum);
       window.ethereum.enable();
     } else {
 
-      this.web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/5c5f653e31b94e6092470d3ac36956b7'));
+      this.web3 = new Web3(new Web3.providers.HttpProvider(`https://mainnet.infura.io/v3/${this.token}`));
     }
   }
 

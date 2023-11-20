@@ -23,7 +23,7 @@
             <div *ngIf="isConnected">
               <div *ngIf="userAddress">
                 <h2>User's Ethereum Address:</h2>
-                <p>{{ userAddress }}</p>
+                <p>{{ userAddress | tokenFormat }}</p>
               </div>
 
               <div *ngIf="userBalance">

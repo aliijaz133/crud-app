@@ -19,19 +19,9 @@ export class AuthService {
     return !!localStorage.getItem(this.USER_STORAGE_KEY);
   }
 
-  getUserName(userName: string) {
-    return localStorage.getItem(this.USERNAME_STORAGE_KEY);
-  }
-
   login(userId: string, userName: string): void {
     localStorage.setItem(this.USER_STORAGE_KEY, userId);
     localStorage.setItem(this.USERNAME_STORAGE_KEY, userName);
-  }
-
-  getUser(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/user-dashboard/header`, {
-      headers: { Authorization: localStorage.getItem('token') || '' },
-    });
   }
 
   logout(): void {

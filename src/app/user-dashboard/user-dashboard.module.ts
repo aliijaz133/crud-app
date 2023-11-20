@@ -25,6 +25,8 @@ import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
+import { TokenFormatPipe } from './pipe/token-format.pipe';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
     DetailMetamaskComponent,
     UserListComponent,
     EditDialogComponent,
-    DeleteConfirmationComponent
+    DeleteConfirmationComponent,
+    TokenFormatPipe
   ],
   imports: [
     CommonModule,
