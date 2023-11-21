@@ -1,15 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly USER_STORAGE_KEY = 'userId';
-  private readonly USERNAME_STORAGE_KEY = 'userName';
+  public readonly USER_STORAGE_KEY = 'userId';
+  public readonly USERNAME_STORAGE_KEY = 'userName';
 
   private baseUrl = 'http://localhost:3000/api';
 
@@ -30,5 +29,9 @@ export class AuthService {
     localStorage.removeItem(this.USERNAME_STORAGE_KEY);
 
     this.router.navigate(['/signin']);
+  }
+
+  getLoggedInUserName(): string | null {
+    return localStorage.getItem(this.USERNAME_STORAGE_KEY);
   }
 }

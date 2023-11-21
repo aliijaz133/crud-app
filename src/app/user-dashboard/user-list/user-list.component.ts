@@ -55,7 +55,7 @@ export class UserListComponent implements OnInit {
       (response: any) => {
         this.userData = response;
         this.animationState++;
-        console.log("User List: ", this.userData);
+        // console.log("User List: ", this.userData);
         
       },
       (error) => {
