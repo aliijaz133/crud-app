@@ -14,40 +14,13 @@
           <div class="userprofile">
             <button
               mat-raised-button
-              matBadge="{{ alert_count }}"
-              [matBadgeHidden]="hidden"
               matBadgeColor="warn"
-              [matMenuTriggerFor]="notification"
               class="btn-icon"
-              (click)="toggleBadgeVisibility()"
             >
               <mat-icon style="color: #9dacb4; cursor: pointer; margin: 0px"
                 >notifications</mat-icon
               >
             </button>
-
-            <mat-menu #notification="matMenu" xPosition="before">
-              <div class="title-notification">
-                <label class="notification">Notification</label>
-              </div>
-              <div *ngFor="let item of notifications_list">
-                <ul class="tree nav-list">
-                  <li
-                    class="list-data"
-                    [ngClass]="{
-                      unread: item.status === 'UNREAD',
-                      read: item.status === 'READ'
-                    }"
-                    (click)="markRead(item.id)"
-                  >
-                    <p class="list-item">{{ item.title }}</p>
-                    <span class="list-detail"
-                      >{{ item.date }} at {{ item.time }}</span
-                    >
-                  </li>
-                </ul>
-              </div>
-            </mat-menu>
 
             <div class="user-menu" [matMenuTriggerFor]="userMenu">
               <div class="logo-img">
@@ -76,7 +49,7 @@
       </div>
     </div>
     <mat-menu #userMenu="matMenu" xPosition="after">
-      <button mat-menu-item (click)="userProfile()">
+      <button mat-menu-item>
         <mat-icon style="margin-left: 20px">manage_accounts</mat-icon>
         <span style="margin: 0 20px">User Profile</span>
       </button>

@@ -10,10 +10,9 @@ import { AuthService } from 'src/app/service/auth.service';
   providers: [DatePipe],
 })
 export class HeaderComponent implements OnInit {
-  userName!: string | null;
+  userName: string | null = null;
   userImg: any;
   data: any[] = [];
-  hidden: boolean = false;
   userIdentity: any;
   notifications_list: any[];
   today = new Date();
@@ -32,11 +31,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // debugger
-    
     this.showLoader = true;
 
-    this.userName = this.authService.getLoggedInUserName();
+    this.getUserName();
 
     setTimeout(() => {
       this.showLoader = false;
@@ -44,29 +41,12 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  toggleBadgeVisibility() {
-    this.hidden = true;
-  }
-
   logout(): void {
     this.authService.logout();
   }
 
-  userProfile() {
-    // Navigate to user profile page if needed
-    // this.router.navigate(['/user-profile']);
-  }
-
-  getNotification() {
-    // Implement notification logic if needed
-  }
-
-  onMenuClosed() {
-    console.log('Menu closed');
-  }
-
-  markRead(id: any) {
-    // Implement mark as read logic if needed
+  getUserName() {
+    return this.userName = this.authService.getLoggedInUserName();
   }
 
 }

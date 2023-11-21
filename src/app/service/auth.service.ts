@@ -31,7 +31,7 @@ export class AuthService {
     this.router.navigate(['/signin']);
   }
 
-  getLoggedInUserName(): string | null {
+  getLoggedInUserName() {
     return localStorage.getItem(this.USERNAME_STORAGE_KEY);
   }
 }
