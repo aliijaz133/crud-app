@@ -31,6 +31,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    // debugger
+    
     this.showLoader = true;
 
     this.userName = this.authService.getLoggedInUserName();

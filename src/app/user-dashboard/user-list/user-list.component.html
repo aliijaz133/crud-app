@@ -47,9 +47,9 @@
           </thead>
           <tbody *ngFor="let user of userData; let index">
             <tr>
-              <td>{{ user.userName }}</td>
+              <td class="text-break">{{ user.userName }}</td>
               <td class="text-break">{{ user.userEmail }}</td>
-              <td>{{user.userMobile}}</td>
+              <td class="text-break">{{ user.userMobile }}</td>
               <td>
                 <mat-icon
                   style="color: #0000ff"
