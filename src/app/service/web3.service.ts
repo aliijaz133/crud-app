@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import Web3 from 'web3';
-import { AuthService } from './auth.service';
 
 declare let window: any;
 
@@ -12,7 +11,7 @@ export class Web3Service {
 
   private token = "5c5f653e31b94e6092470d3ac36956b7";
 
-  constructor(private authService: AuthService) {
+  constructor() {
 
     if (typeof window.ethereum !== 'undefined') {
 
