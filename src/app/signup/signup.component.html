@@ -56,6 +56,39 @@
         <input
           type="text"
           class="form-control"
+          placeholder="Enter Mobile Number"
+          formControlName="userMobile"
+          (input)="formatPhoneNumber($event)"
+          maxlength="12"
+          autocomplete="off"
+        />
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <span><mat-icon>phone</mat-icon></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="email-container invalid-field">
+        <div
+          *ngIf="
+            userSignUp.get('userMobile')?.touched &&
+            userSignUp.get('userMobile')?.invalid
+          "
+        >
+          <span *ngIf="userSignUp.get('userMobile')?.hasError('required')"
+            >This field is required.</span
+          >
+          <span *ngIf="userSignUp.get('userMobile')?.hasError('minlength')"
+            >Mobile number should be 11 digit.</span
+          >
+        </div>
+      </div>
+
+      <div class="input-group mb-2">
+        <input
+          type="text"
+          class="form-control"
           placeholder="Enter Email"
           formControlName="userEmail"
           autocomplete="off"
@@ -130,7 +163,12 @@
         Sign Up
       </button>
       <hr />
-      <h3 style="color: #0000ff;cursor: pointer;user-select: none;" (click)="loginPage()">Login here</h3>
+      <h3
+        style="color: #0000ff; cursor: pointer; user-select: none"
+        (click)="loginPage()"
+      >
+        Login here
+      </h3>
     </form>
   </div>
 </div>

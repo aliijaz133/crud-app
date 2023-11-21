@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 interface User {
   userName: string;
+  userMobile:string,
   userEmail: string;
   userPwd: string;
 }
@@ -20,6 +21,7 @@ interface User {
 export class SignupComponent implements OnInit {
   user = {
     userName: '',
+    userMobile: '',
     userEmail: '',
     userPwd: '',
   };
@@ -37,6 +39,7 @@ export class SignupComponent implements OnInit {
   ) {
     this.userSignUp = this.fb.group({
       userName: ['', Validators.required],
+      userMobile: ['', [Validators.required, Validators.minLength(12)]],
       userEmail: ['', [Validators.required, Validators.email]],
       userPwd: ['', Validators.required],
     });
@@ -72,6 +75,16 @@ export class SignupComponent implements OnInit {
     }
 
     this.userSignUp.reset();
+  }
+
+  formatPhoneNumber(event: any) {
+    const input = event.target.value.replace(/\D/g, '');
+    const match = input.match(/^(\d{0,4})(\d{0,7})/);
+
+    if (match) {
+      const formatted = match[1] + (match[1] && match[2] ? ' ' : '') + match[2];
+      event.target.value = formatted;
+    }
   }
 
   loginPage() {

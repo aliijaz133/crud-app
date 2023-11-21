@@ -21,7 +21,7 @@
           id="search"
           class="form-control me-2"
           style="width: auto"
-          placeholder="Search..."
+          placeholder="Filter..."
           [(ngModel)]="searchQuery"
           (input)="applyFilter()"
         />
@@ -40,6 +40,7 @@
             <tr>
               <th>Name</th>
               <th>Email</th>
+              <th>Mobile</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -48,6 +49,7 @@
             <tr>
               <td>{{ user.userName }}</td>
               <td class="text-break">{{ user.userEmail }}</td>
+              <td>{{user.userMobile}}</td>
               <td>
                 <mat-icon
                   style="color: #0000ff"

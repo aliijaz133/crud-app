@@ -55,7 +55,8 @@ export class UserListComponent implements OnInit {
       (response: any) => {
         this.userData = response;
         this.animationState++;
-        // console.log('here is user data:::>,', this.userData);
+        console.log("User List: ", this.userData);
+        
       },
       (error) => {
         console.error('Error fetching user data:', error);
@@ -124,7 +125,8 @@ export class UserListComponent implements OnInit {
     } else {
       this.userData = this.userData.filter(user =>
         user.userName.toLowerCase().includes(filterValue) ||
-        user.userEmail.toLowerCase().includes(filterValue)
+        user.userEmail.toLowerCase().includes(filterValue) ||
+        user.userMobile.toLowerCase().includes(filterValue)
       );
     }
   }

@@ -4,7 +4,7 @@ main {
 }
 
 .offcanvas {
-  background-color: aliceblue;
+  background-color: rgb(98, 129, 156);
   border-right: 1px solid #000;
 }
 
@@ -51,6 +51,10 @@ a {
 .logo_title h4 {
   display: inline-block; /* Ensure text and icon are on the same line */
   margin-left: 10px; /* Add some space between icon and text */
+}
+
+.active {
+  background-color: rgb(26, 236, 166);
 }
 
 /* Media query for screens with a maximum width of 600 pixels (adjust as needed) */
