@@ -38,6 +38,7 @@
         <table class="table" *ngIf="userData !== null">
           <thead class="table-dark">
             <tr>
+              <th>ID</th>
               <th>Name</th>
               <th>Email</th>
               <th>Mobile</th>
@@ -45,8 +46,9 @@
               <th>Delete</th>
             </tr>
           </thead>
-          <tbody *ngFor="let user of userData; let index">
+          <tbody *ngFor="let user of userData; let index = index">
             <tr>
+              <td class="text-break">{{ incrementalId + index }}</td>
               <td class="text-break">{{ user.userName }}</td>
               <td class="text-break">{{ user.userEmail }}</td>
               <td class="text-break">{{ user.userMobile }}</td>

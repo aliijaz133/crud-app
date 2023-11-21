@@ -29,6 +29,8 @@ export class UserListComponent implements OnInit {
 
   searchQuery: string = '';
 
+  incrementalId: number = 1;
+
   showLoader = false;
 
   private url: string = "http://localhost:3000/api/user-dashboard/user-list";
@@ -56,7 +58,7 @@ export class UserListComponent implements OnInit {
         this.userData = response;
         this.animationState++;
         // console.log("User List: ", this.userData);
-        
+
       },
       (error) => {
         console.error('Error fetching user data:', error);
@@ -96,8 +98,8 @@ export class UserListComponent implements OnInit {
 
 
   deleteUser(userId: string) {
-    const dialogRef = this.dialog.open(DeleteConfirmationComponent,{
-      disableClose : true,
+    const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
+      disableClose: true,
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -119,17 +121,18 @@ export class UserListComponent implements OnInit {
 
   applyFilter() {
     const filterValue = this.searchQuery.trim().toLowerCase();
-  
+
     if (filterValue === '') {
       this.getUserData();
     } else {
       this.userData = this.userData.filter(user =>
         user.userName.toLowerCase().includes(filterValue) ||
         user.userEmail.toLowerCase().includes(filterValue) ||
-        user.userMobile.toLowerCase().includes(filterValue)
+        user.userMobile.toLowerCase().includes(filterValue) ||
+        this.incrementalId.toLocaleString().includes(filterValue)
       );
     }
   }
-  
-  
+
+
 }
