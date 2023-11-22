@@ -16,21 +16,33 @@
         "
         class="f-w"
       >
-        <input
-          type="text"
-          id="search"
-          class="form-control me-2"
-          style="width: auto"
-          placeholder="Filter..."
-          [(ngModel)]="searchQuery"
-          (input)="applyFilter()"
-        />
+        <div class="search">
+          <div class="search-box">
+            <div class="search-field">
+              <input
+                placeholder="Search..."
+                class="input"
+                type="text"
+                [(ngModel)]="searchQuery"
+                (input)="applyFilter()"
+              />
+              <div class="search-box-icon">
+                <button class="btn-icon-content">
+                  <i
+                    class="fa fa-filter"
+                    style="font-size: 24px; color: rgb(255, 255, 255)"
+                  ></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         <h3
-          *ngIf="userData && userData.length > 0"
+          *ngIf="userData.length == 0 ? '0' : userData.length"
           [@counter]="animationState"
           style="padding-top: 20px; font-weight: 500"
         >
-          Total User: {{ userData.length | number }}
+          Total User: {{ userData.length }}
         </h3>
       </div>
       <!-- User Data Table -->
