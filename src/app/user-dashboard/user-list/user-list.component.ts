@@ -25,7 +25,7 @@ export class UserListComponent implements OnInit {
 
   animationState: number = 0;
 
-  userData!: any[];
+  userData: any[]=[];
 
   searchQuery: string = '';
 

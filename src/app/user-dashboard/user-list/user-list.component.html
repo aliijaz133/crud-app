@@ -38,7 +38,11 @@
           </div>
         </div>
         <h3
-          *ngIf="userData.length == 0 ? '0' : userData.length"
+          *ngIf="
+            userData !== undefined && userData.length == 0
+              ? '0'
+              : userData.length
+          "
           [@counter]="animationState"
           style="padding-top: 20px; font-weight: 500"
         >
