@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
@@ -6,7 +6,6 @@ import { ToastrService } from 'ngx-toastr';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { UserService } from 'src/app/service/user.service';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
-
 
 @Component({
   selector: 'app-user-list',
@@ -16,16 +15,15 @@ import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confi
     trigger('counter', [
       transition(':increment', [
         style({ transform: 'scale(0.8)', opacity: 0 }),
-        animate('500ms ease-out', style({ transform: 'scale(1)', opacity: 1 })),
+        animate('500ms ease-in', style({ transform: 'scale(1)', opacity: 1 })),
       ]),
     ]),
   ],
 })
 export class UserListComponent implements OnInit {
-
   animationState: number = 0;
 
-  userData: any[]=[];
+  userData: any[] = [];
 
   searchQuery: string = '';
 
@@ -33,13 +31,16 @@ export class UserListComponent implements OnInit {
 
   showLoader = false;
 
-  private url: string = "http://localhost:3000/api/user-dashboard/user-list";
+  private url: string = 'http://localhost:3000/api/user-dashboard/user-list';
 
-
-  constructor(private http: HttpClient, public dialog: MatDialog, private toastr: ToastrService, private ngzone: NgZone, private userService: UserService) { }
+  constructor(
+    private http: HttpClient,
+    public dialog: MatDialog,
+    private toastr: ToastrService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-
     this.showLoader = true;
 
     this.getUserData();
@@ -47,10 +48,7 @@ export class UserListComponent implements OnInit {
     setTimeout(() => {
       this.showLoader = false;
     });
-
   }
-
-
 
   getUserData(): void {
     this.http.get(this.url).subscribe(
@@ -58,13 +56,11 @@ export class UserListComponent implements OnInit {
         this.userData = response;
         this.animationState++;
         // console.log("User List: ", this.userData);
-
       },
       (error) => {
         console.error('Error fetching user data:', error);
       }
     );
-
   }
 
   editUser(users: any): void {
@@ -73,15 +69,18 @@ export class UserListComponent implements OnInit {
       disableClose: true,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.updateUser(users._id, result);
-        this.toastr.success("This user data is successfully updated.")
+        this.toastr.success('This user data is successfully updated.');
       }
     });
   }
 
-  updateUser(userId: string, newData: { userName?: string, userEmail?: string }) {
+  updateUser(
+    userId: string,
+    newData: { userName?: string; userEmail?: string }
+  ) {
     this.userService.updateUser(userId, newData).subscribe(
       () => {
         // console.log(`User with ID ${userId} updated successfully.`);
@@ -90,29 +89,27 @@ export class UserListComponent implements OnInit {
       },
       (error) => {
         // console.error(`Error updating user with ID ${userId}:`, error);
-        this.toastr.error("Updating Error.")
+        this.toastr.error('Updating Error.');
       }
     );
   }
-
-
 
   deleteUser(userId: string) {
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
       disableClose: true,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.userService.deleteUser(userId).subscribe(
           () => {
             // console.log(`User with ID ${userId} deleted.`);
             this.getUserData();
-            this.toastr.success("This account is successfully deleted.");
+            this.toastr.success('This account is successfully deleted.');
           },
           (error) => {
             // console.error(`Error deleting user with ID ${userId}:`, error);
-            this.toastr.error("Deleting Error.");
+            this.toastr.error('Deleting Error.');
           }
         );
       }
@@ -125,14 +122,12 @@ export class UserListComponent implements OnInit {
     if (filterValue === '') {
       this.getUserData();
     } else {
-      this.userData = this.userData.filter(user =>
-        user.userName.toLowerCase().includes(filterValue) ||
-        user.userEmail.toLowerCase().includes(filterValue) ||
-        user.userMobile.toLowerCase().includes(filterValue) ||
-        this.incrementalId.toLocaleString().includes(filterValue)
+      this.userData = this.userData.filter(
+        (user) =>
+          user.userName.toLowerCase().includes(filterValue) ||
+          user.userEmail.toLowerCase().includes(filterValue) ||
+          user.userMobile.toLowerCase().includes(filterValue)
       );
     }
   }
-
-
 }
