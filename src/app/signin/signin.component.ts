@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AccountBlockComponent } from '../account-block/account-block.component';
 
 @Component({
   selector: 'app-signin',
@@ -51,6 +52,11 @@ export class SigninComponent implements OnInit {
     this.http.post('http://localhost:3000/api/signin', this.user)
       .subscribe(
         (response: any) => {
+
+          if (this.user.userEmail === "aliijaz@gmail.com")
+          {
+            AccountBlockComponent
+          }
           console.log('Server response:', response);
 
           localStorage.setItem('userId', response._id);
@@ -64,7 +70,9 @@ export class SigninComponent implements OnInit {
 
           if (error.status === 401) {
             this.toastr.error('Invalid email or password');
-          } else {
+          } 
+
+          else {
             this.toastr.error('Login failed. Please try again.');
           }
         }
