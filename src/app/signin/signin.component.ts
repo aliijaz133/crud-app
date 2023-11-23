@@ -4,13 +4,17 @@ import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountBlockComponent } from '../account-block/account-block.component';
-
+import { ConnectionService } from 'ng-connection-service';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
+
+  status = 'ONLINE';
+  isConnected = true;
+
   user = {
     userEmail: '',
     userPwd: '',
@@ -24,12 +28,24 @@ export class SigninComponent implements OnInit {
     private http: HttpClient,
     private toastr: ToastrService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private connectionService:ConnectionService
   ) {
     this.userLogin = this.fb.group({
       userEmail: new FormControl('', [Validators.required, Validators.email]),
       userPwd: new FormControl('', [Validators.required]),
     });
+
+    this.connectionService.monitor().subscribe(isConnected => {
+      this.isConnected = <unknown>isConnected as boolean;
+      if(this.isConnected){
+      this.status = "ONLINE";
+      // this.toastr.success('You are online now.');
+      } else {
+      this.status = "OFFLINE"
+      this.toastr.error('Internet connection Error.');
+      }
+      });
   }
 
   ngOnInit(): void {

@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
     private fb: FormBuilder,
     private toastr: ToastrService,
     private router: Router,
-    private connectionService:ConnectionService
+    private connectionService: ConnectionService
   ) {
     this.userSignUp = this.fb.group({
       userName: ['', Validators.required],
@@ -47,16 +47,16 @@ export class SignupComponent implements OnInit {
       userPwd: ['', Validators.required],
     });
 
-    this.connectionService.monitor().subscribe(isConnected => {
-      this.isConnected = <unknown>isConnected as boolean;
-      if(this.isConnected){
-      this.status = "ONLINE";
-      this.toastr.success('You are online now.');
+    this.connectionService.monitor().subscribe((isConnected) => {
+      this.isConnected = (<unknown>isConnected) as boolean;
+      if (this.isConnected) {
+        this.status = 'ONLINE';
+        // this.toastr.success('You are online now.');
       } else {
-      this.status = "OFFLINE"
-      this.toastr.error('Internet connection')
+        this.status = 'OFFLINE';
+        this.toastr.error('Internet connection Error.');
       }
-      });
+    });
   }
 
   ngOnInit(): void {

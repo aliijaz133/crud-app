@@ -45,12 +45,16 @@
               {{ userBalance }} ETH
             </p>
 
-            <button class="btn btn-outline-primary" (click)="addToken()" matTooltip="Create new account">
+            <button
+              class="btn btn-outline-primary"
+              (click)="addToken()"
+              matTooltip="Create new account"
+            >
               Add Token
             </button>
             <div>
-              <h3>Current Dollar Rate: {{dollarRate}}</h3>
-              <h3>Current Eth Rate: {{ethRate}}</h3>
+              <h3>Current Dollar Rate: {{ dollarRate | currency }}</h3>
+              <h3>Current Eth Rate: {{ ethRate | currency }}</h3>
             </div>
           </div>
           <div style="background-color: #e9e9e9; padding: 15px">
@@ -65,14 +69,18 @@
                 <h3>Transaction</h3>
               </div>
               <div>
-                <button class="btn btn-primary" (click)="deposit()" matTooltip="Deposit Amount">
+                <button
+                  class="btn btn-primary"
+                  (click)="deposit()"
+                  matTooltip="Deposit Amount"
+                >
                   Deposit
                 </button>
               </div>
             </div>
             <div *ngIf="userAddress">
               <h4>User's Ethereum Address:</h4>
-              <p>{{ userAddress | tokenFormat}}</p>
+              <p>{{ userAddress | tokenFormat }}</p>
             </div>
 
             <div *ngIf="userBalance">
@@ -104,20 +112,39 @@
         <div class="swap-container">
           <form [formGroup]="swapvalue" (ngSubmit)="checkSwapValue()">
             <div class="primary-value">
-            <mat-form-field appearance="fill">
-              <mat-label>USDT $</mat-label>
-              <input matInput type="text" placeholder="Enter USDT Value" formControlName="usdtValue" (input)="formatPhoneNumber($event)">
-              <mat-icon matSuffix>dollar_symbol</mat-icon>
-            </mat-form-field>
-          </div>
-          <div class="secondary-value">
-            <mat-form-field appearance="fill">
-              <mat-label>BNB</mat-label>
-              <input matInput type="text" placeholder="Enter BNB Value" formControlName="bnbValue" (input)="formatPhoneNumber($event)">
-              <mat-icon matSuffix>square</mat-icon>
-            </mat-form-field>
-          </div>
-          <button mat-raised-button color="primary" type="submit"  [disabled]="swapvalue.invalid">Check</button>
+              <mat-form-field appearance="fill">
+                <mat-label>USDT $</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Enter USDT Value"
+                  formControlName="usdtValue"
+                  (input)="formatPhoneNumber($event)"
+                />
+                <mat-icon matSuffix>dollar_symbol</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="secondary-value">
+              <mat-form-field appearance="fill">
+                <mat-label>BNB</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Enter BNB Value"
+                  formControlName="bnbValue"
+                  (input)="formatPhoneNumber($event)"
+                />
+                <mat-icon matSuffix>square</mat-icon>
+              </mat-form-field>
+            </div>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="swapvalue.invalid"
+            >
+              Check
+            </button>
           </form>
         </div>
       </section>

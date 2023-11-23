@@ -38,9 +38,6 @@ export class MetaMaskComponent implements OnInit {
 
   swapvalue: FormGroup;
 
-  // usdtValue!: FormControl;
-  // bnbValue!: FormControl;
-
   constructor(
     private toastr: ToastrService,
     private web3service: Web3Service,
