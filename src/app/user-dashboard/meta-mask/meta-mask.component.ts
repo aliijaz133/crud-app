@@ -63,9 +63,11 @@ export class MetaMaskComponent implements OnInit {
       ]),
     });
   }
+
   showDetail() {
     this.dialog.open(DetailMetamaskComponent);
   }
+  
   async ngOnInit() {
     this.transactionService.getTransactions().subscribe((transactions) => {
       this.transactions = transactions;

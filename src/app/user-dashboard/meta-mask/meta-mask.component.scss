@@ -58,6 +58,15 @@ section {
   color: #0084ff;
 }
 
+.details-btn:hover {
+  background-color: #0084ff;
+  color: #fff;
+}
+
+.details-btn:active {
+  transform: scale(95%);
+}
+
 @media (max-width: 600px) {
   .main-container {
     display: grid;
