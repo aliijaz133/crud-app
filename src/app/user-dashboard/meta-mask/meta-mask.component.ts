@@ -24,8 +24,6 @@ declare let ethereum: any;
   styleUrls: ['./meta-mask.component.scss'],
 })
 export class MetaMaskComponent implements OnInit {
-  // @ViewChild('imgZooming', { static: true }) imgZooming!: ElementRef;
-
   exchangeDailyRates!: ExchangeDailyRate;
 
   showLoader = false;
@@ -96,14 +94,11 @@ export class MetaMaskComponent implements OnInit {
       this.showLoader = false;
     });
 
-    // this.dollarRate = await this.exchangeRate.getExchangeRate('ETH', 'USD');
-    // this.ethRate = await this.exchangeRate.getExchangeRate('USD', 'ETH');
     try {
       this.dollarRate = await this.exchangeRate.getExchangeRate('ETH', 'USD');
       this.ethRate = await this.exchangeRate.getExchangeRate('USD', 'ETH');
     } catch (error) {
       console.error('Error getting exchange rates', error);
-      // Handle the error as needed
     }
   }
 
@@ -168,14 +163,11 @@ export class MetaMaskComponent implements OnInit {
   }
 
   acceptTransaction(transaction: Transaction) {
-    // Update the transaction status to 'accepted'
     transaction.status = 'accepted';
     this.toastr.success('Transaction accepted!');
   }
 
-  // Function to handle transaction rejection
   rejectTransaction(transaction: Transaction) {
-    // Update the transaction status to 'rejected'
     transaction.status = 'rejected';
     this.toastr.error('Transaction rejected!');
   }
