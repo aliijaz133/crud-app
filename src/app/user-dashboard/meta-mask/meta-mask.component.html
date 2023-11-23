@@ -45,9 +45,13 @@
               {{ userBalance }} ETH
             </p>
 
-            <button class="btn btn-outline-primary" (click)="addToken()">
+            <button class="btn btn-outline-primary" (click)="addToken()" matTooltip="Create new account">
               Add Token
             </button>
+            <div>
+              <h3>Current Dollar Rate: {{dollarRate}}</h3>
+              <h3>Current Eth Rate: {{ethRate}}</h3>
+            </div>
           </div>
           <div style="background-color: #e9e9e9; padding: 15px">
             <div
@@ -61,7 +65,7 @@
                 <h3>Transaction</h3>
               </div>
               <div>
-                <button class="btn btn-primary" (click)="deposit()">
+                <button class="btn btn-primary" (click)="deposit()" matTooltip="Deposit Amount">
                   Deposit
                 </button>
               </div>
@@ -96,6 +100,25 @@
 
             <!-- Provide buttons to accept or reject the transaction -->
           </div>
+        </div>
+        <div class="swap-container">
+          <form [formGroup]="swapvalue" (ngSubmit)="checkSwapValue()">
+            <div class="primary-value">
+            <mat-form-field appearance="fill">
+              <mat-label>USDT</mat-label>
+              <input matInput type="text" placeholder="Enter USDT Value" formControlName="usdtValue">
+              <mat-icon matSuffix>circle</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="secondary-value">
+            <mat-form-field appearance="fill">
+              <mat-label>BNB</mat-label>
+              <input matInput type="text" placeholder="Enter BNB Value" formControlName="bnbValue">
+              <mat-icon matSuffix>square</mat-icon>
+            </mat-form-field>
+          </div>
+          <button mat-raised-button color="primary" type="submit"  [disabled]="swapvalue.invalid">Check</button>
+          </form>
         </div>
       </section>
     </div>

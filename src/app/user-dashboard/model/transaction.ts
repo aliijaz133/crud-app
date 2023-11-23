@@ -3,5 +3,9 @@ export interface Transaction {
   from: string;
   to: string;
   amount: string;
-  status: 'pending' | 'accepted' | 'rejected';
+  status: {
+    pending: boolean;
+    accepted: boolean;
+    rejected: boolean;
+  };
 }

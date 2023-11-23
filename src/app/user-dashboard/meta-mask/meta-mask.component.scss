@@ -32,6 +32,13 @@ section {
   animation: myAnim 2s ease 0s 1 normal forwards;
 }
 
+.swap-container {
+  background-color: rgb(49, 47, 47);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 50px;
+}
+
 @keyframes myAnim {
   0% {
     opacity: 0;

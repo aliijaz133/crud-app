@@ -27,7 +27,7 @@
                 (input)="applyFilter()"
               />
               <div class="search-box-icon">
-                <button class="btn-icon-content">
+                <button class="btn-icon-content" matTooltip="Filter Data">
                   <i
                     class="fa fa-filter"
                     style="font-size: 24px; color: rgb(255, 255, 255)"
@@ -45,6 +45,7 @@
           "
           [@counter]="animationState"
           style="padding-top: 20px; font-weight: 500"
+          matTooltip="Show Total User"
         >
           Total User: {{ userData.length }}
         </h3>
@@ -78,11 +79,15 @@
                     })
                   "
                   (click)="editUser(user)"
+                  matTooltip="Update User Data"
                   >edit</mat-icon
                 >
               </td>
               <td>
-                <mat-icon style="color: #ff0000" (click)="deleteUser(user._id)"
+                <mat-icon
+                  style="color: #ff0000"
+                  (click)="deleteUser(user._id)"
+                  matTooltip="Delete User Data"
                   >delete</mat-icon
                 >
               </td>
