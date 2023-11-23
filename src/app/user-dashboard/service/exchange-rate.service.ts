@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class ExchangeRateService {
   private apiToken = 'efff8a5d6eb05010343578a85f';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   async getExchangeRate(
     fromCurrency: string,
@@ -23,7 +24,8 @@ export class ExchangeRateService {
       const rates = response.data.rates;
       return rates[fromCurrency];
     } else {
-      console.error('Error retrieving exchange rate');
+      // console.error('Error retrieving exchange rate');
+      this.toastr.error('Error retrieving exchange rate.',fromCurrency)
       return 0;
     }
   }

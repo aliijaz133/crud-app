@@ -171,4 +171,14 @@ export class MetaMaskComponent implements OnInit {
   checkSwapValue() {
     console.log('value', this.swapvalue.value);
   }
+
+  formatPhoneNumber(event: any) {
+    const input = event.target.value.replace(/\D/g, '');
+    const match = input.match(/^(\d{0,9})(\d{0,0})/);
+
+    if (match) {
+      const formatted = match[1] + (match[1] && match[2] ? ' ' : '') + match[2];
+      event.target.value = formatted;
+    }
+  }
 }

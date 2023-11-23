@@ -105,15 +105,15 @@
           <form [formGroup]="swapvalue" (ngSubmit)="checkSwapValue()">
             <div class="primary-value">
             <mat-form-field appearance="fill">
-              <mat-label>USDT</mat-label>
-              <input matInput type="text" placeholder="Enter USDT Value" formControlName="usdtValue">
-              <mat-icon matSuffix>circle</mat-icon>
+              <mat-label>USDT $</mat-label>
+              <input matInput type="text" placeholder="Enter USDT Value" formControlName="usdtValue" (input)="formatPhoneNumber($event)">
+              <mat-icon matSuffix>dollar_symbol</mat-icon>
             </mat-form-field>
           </div>
           <div class="secondary-value">
             <mat-form-field appearance="fill">
               <mat-label>BNB</mat-label>
-              <input matInput type="text" placeholder="Enter BNB Value" formControlName="bnbValue">
+              <input matInput type="text" placeholder="Enter BNB Value" formControlName="bnbValue" (input)="formatPhoneNumber($event)">
               <mat-icon matSuffix>square</mat-icon>
             </mat-form-field>
           </div>
