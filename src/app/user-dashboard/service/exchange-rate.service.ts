@@ -16,16 +16,29 @@ export class ExchangeRateService {
   ): Promise<number> {
     const url =
       'https://v6.exchangerate-api.com/v6/33db014ce0eaac5fc7182133/latest/USD';
-    const response = (await this.http.get(url).toPromise()) as {
-      data: { rates: Record<string, number> };
-    };
 
-    if (response && response.data && response.data.rates) {
-      const rates = response.data.rates;
-      return rates[fromCurrency];
-    } else {
-      // console.error('Error retrieving exchange rate');
-      this.toastr.error('Error retrieving exchange rate.',fromCurrency)
+    try {
+      const response = await this.http.get(url).toPromise();
+      const responseData = response as {
+        data: { rates: Record<string, number> };
+      };
+
+      if (responseData && responseData.data && responseData.data.rates) {
+        const rates = responseData.data.rates;
+        return rates[fromCurrency];
+      } else {
+        this.toastr.error(
+          'Invalid response format from the API.',
+          fromCurrency
+        );
+        return 0;
+      }
+    } catch (error) {
+      console.error('Error retrieving exchange rate', error);
+      this.toastr.error(
+        'Error retrieving exchange rate. See console for details.',
+        fromCurrency
+      );
       return 0;
     }
   }

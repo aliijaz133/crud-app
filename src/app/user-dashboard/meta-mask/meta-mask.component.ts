@@ -24,7 +24,7 @@ declare let ethereum: any;
   styleUrls: ['./meta-mask.component.scss'],
 })
 export class MetaMaskComponent implements OnInit {
-  @ViewChild('imgZooming', { static: true }) imgZooming!: ElementRef;
+  // @ViewChild('imgZooming', { static: true }) imgZooming!: ElementRef;
 
   exchangeDailyRates!: ExchangeDailyRate;
 
@@ -96,8 +96,15 @@ export class MetaMaskComponent implements OnInit {
       this.showLoader = false;
     });
 
-    this.dollarRate = await this.exchangeRate.getExchangeRate('ETH', 'USD');
-    this.ethRate = await this.exchangeRate.getExchangeRate('USD', 'ETH');
+    // this.dollarRate = await this.exchangeRate.getExchangeRate('ETH', 'USD');
+    // this.ethRate = await this.exchangeRate.getExchangeRate('USD', 'ETH');
+    try {
+      this.dollarRate = await this.exchangeRate.getExchangeRate('ETH', 'USD');
+      this.ethRate = await this.exchangeRate.getExchangeRate('USD', 'ETH');
+    } catch (error) {
+      console.error('Error getting exchange rates', error);
+      // Handle the error as needed
+    }
   }
 
   addToken() {
@@ -207,15 +214,21 @@ export class MetaMaskComponent implements OnInit {
     }
   }
 
-  zoomingSetting(zoom: any) {
-    console.log('Image Zooming is 1000px.');
+  @ViewChild('imgZooming', { static: false }) imgZooming!: ElementRef;
 
-    const zooming = zoom.target.value;
+  zoomedIn: boolean = false;
 
-    const zoomPlus = (zooming.style.width = '1000px');
+  zoomingSetting() {
+    this.zoomedIn = !this.zoomedIn;
 
-    if (zoomPlus) {
-      this.el.nativeElement.style.width = '1000px';
+    const imgElement = this.imgZooming.nativeElement as HTMLImageElement;
+
+    if (this.zoomedIn) {
+      imgElement.style.width = '1000px';
+      imgElement.style.height = 'auto';
+    } else {
+      imgElement.style.width = 'auto';
+      imgElement.style.height = 'auto';
     }
   }
 }
