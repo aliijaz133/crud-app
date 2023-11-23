@@ -34,7 +34,9 @@ export class MetaMaskComponent implements OnInit {
   transactions!: Transaction[];
   dollarRate!: number;
 
-  ethRate !: number;
+  totalValue!: number;
+
+  ethRate!: number;
 
   swapvalue: FormGroup;
 
@@ -93,7 +95,7 @@ export class MetaMaskComponent implements OnInit {
   }
 
   addToken() {
-    const tokenAddress = '0xb60e8dd61c5d32be8058bb8eb970870f07233155'; // Replace with your token address
+    const tokenAddress = '0xb60e8dd61c5d32be8058bb8eb970870f07233155';
     const tokenSymbol = 'FOO';
     const tokenDecimals = 18;
     const tokenImage = 'https://foo.io/token-image.svg';
@@ -167,6 +169,19 @@ export class MetaMaskComponent implements OnInit {
 
   checkSwapValue() {
     console.log('value', this.swapvalue.value);
+
+    if (this.swapvalue) {
+      const bnbV = this.swapvalue.get('bnbValue')?.value;
+      const dollarV = this.swapvalue.get('usdtValue')?.value;
+
+      const totalValue = dollarV / bnbV;
+
+      this.totalValue = totalValue;
+
+      if (totalValue) {
+        console.log('BNB Value:', this.totalValue);
+      }
+    }
   }
 
   formatPhoneNumber(event: any) {
