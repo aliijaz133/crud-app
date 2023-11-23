@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Web3Service } from 'src/app/service/web3.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -6,6 +6,7 @@ import { DetailMetamaskComponent } from '../detail-metamask/detail-metamask.comp
 import Web3 from 'web3';
 import { TransactionService } from 'src/app/service/transaction.service';
 import { Transaction } from 'src/app/service/transaction.service';
+import { ExchangeDailyRate } from '../model/exchange-daily-rate';
 
 import {
   FormBuilder,
@@ -23,6 +24,10 @@ declare let ethereum: any;
   styleUrls: ['./meta-mask.component.scss'],
 })
 export class MetaMaskComponent implements OnInit {
+  @ViewChild('imgZooming', { static: true }) imgZooming!: ElementRef;
+
+  exchangeDailyRates!: ExchangeDailyRate;
+
   showLoader = false;
   userAddress!: string;
   userBalance!: string;
@@ -46,7 +51,8 @@ export class MetaMaskComponent implements OnInit {
     public dialog: MatDialog,
     private transactionService: TransactionService,
     private formBuilder: FormBuilder,
-    private exchangeRate: ExchangeRateService
+    private exchangeRate: ExchangeRateService,
+    private el: ElementRef
   ) {
     this.swapvalue = this.formBuilder.group({
       bnbValue: new FormControl('', [
@@ -174,14 +180,21 @@ export class MetaMaskComponent implements OnInit {
       const bnbV = this.swapvalue.get('bnbValue')?.value;
       const dollarV = this.swapvalue.get('usdtValue')?.value;
 
-      const totalValue = dollarV / bnbV;
-
+      const totalValue = dollarV / 0.0043;
       this.totalValue = totalValue;
 
       if (totalValue) {
         console.log('BNB Value:', this.totalValue);
       }
+
+      if (this.swapvalue) {
+        console.log('User Enter BNB Value: ', bnbV);
+
+        console.log('User Enter Dollar Value: ', dollarV);
+      }
     }
+
+    this.swapvalue.reset();
   }
 
   formatPhoneNumber(event: any) {
@@ -191,6 +204,18 @@ export class MetaMaskComponent implements OnInit {
     if (match) {
       const formatted = match[1] + (match[1] && match[2] ? ' ' : '') + match[2];
       event.target.value = formatted;
+    }
+  }
+
+  zoomingSetting(zoom: any) {
+    console.log('Image Zooming is 1000px.');
+
+    const zooming = zoom.target.value;
+
+    const zoomPlus = (zooming.style.width = '1000px');
+
+    if (zoomPlus) {
+      this.el.nativeElement.style.width = '1000px';
     }
   }
 }

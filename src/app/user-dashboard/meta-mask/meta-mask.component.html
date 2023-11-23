@@ -19,6 +19,8 @@
             <img
               src="../../../assets/image/meta-mask-account.png"
               alt="MetaMask Avatar"
+              (click)="zoomingSetting($event)"
+              id="imgZooming"
             />
             <label style="font-weight: 500">CRUD-App</label>
             <button
@@ -121,7 +123,7 @@
                   formControlName="usdtValue"
                   (input)="formatPhoneNumber($event)"
                 />
-                <mat-icon matSuffix>dollar_symbol</mat-icon>
+                <mat-icon matSuffix>circle</mat-icon>
               </mat-form-field>
             </div>
             <div class="secondary-value">
@@ -133,10 +135,12 @@
                   placeholder="Enter BNB Value"
                   formControlName="bnbValue"
                   (input)="formatPhoneNumber($event)"
-                  [(ngModel)]="totalValue"
                 />
                 <mat-icon matSuffix>square</mat-icon>
               </mat-form-field>
+            </div>
+            <div *ngIf="totalValue">
+              <h3>Total Dollar: {{ totalValue | currency }}</h3>
             </div>
             <button
               mat-raised-button
