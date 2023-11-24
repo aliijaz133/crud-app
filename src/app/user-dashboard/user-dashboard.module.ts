@@ -26,7 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { TokenFormatPipe } from './pipe/token-format.pipe';
-
+import { ExportAsModule } from 'ngx-export-as';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { TokenFormatPipe } from './pipe/token-format.pipe';
     UserListComponent,
     EditDialogComponent,
     DeleteConfirmationComponent,
-    TokenFormatPipe
+    TokenFormatPipe,
   ],
   imports: [
     CommonModule,
@@ -58,7 +58,8 @@ import { TokenFormatPipe } from './pipe/token-format.pipe';
     MatPaginatorModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
-  ]
+    MatInputModule,
+    ExportAsModule,
+  ],
 })
-export class UserDashboardModule { }
+export class UserDashboardModule {}

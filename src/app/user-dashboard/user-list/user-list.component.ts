@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { UserService } from 'src/app/service/user.service';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
-
+import { ExportAsService, ExportAsConfig } from 'ngx-export-as';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -31,13 +31,33 @@ export class UserListComponent implements OnInit {
 
   showLoader = false;
 
+  @ViewChild('myTableElementId') myTableElementId?: ElementRef;
+
   private url: string = 'http://localhost:3000/api/user-dashboard/user-list';
+
+  exportAsConfig: ExportAsConfig = {
+    type: 'pdf',
+    options: {
+      orientation: 'landscape',
+      unit: 'mm',
+      format: 'a4',
+      pageWidth: 210,
+      margins: {
+        top: 20,
+        bottom: 20,
+        left: 20,
+        right: 20,
+      },
+    },
+    elementIdOrContent: 'myTableElementId',
+  };
 
   constructor(
     private http: HttpClient,
     public dialog: MatDialog,
     private toastr: ToastrService,
-    private userService: UserService
+    private userService: UserService,
+    private exportAsService: ExportAsService
   ) {}
 
   ngOnInit(): void {
@@ -129,5 +149,17 @@ export class UserListComponent implements OnInit {
           user.userMobile.toLowerCase().includes(filterValue)
       );
     }
+  }
+
+  generatePDF() {
+    this.showLoader = true;
+    setTimeout(() => {
+      this.showLoader = false;
+      this.exportAsService
+        .save(this.exportAsConfig, 'User List')
+        .subscribe(() => {
+          this.toastr.success('Pdf file has been created successfully.');
+        });
+    }, 2000);
   }
 }
