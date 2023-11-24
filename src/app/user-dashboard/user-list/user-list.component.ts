@@ -31,6 +31,19 @@ export class UserListComponent implements OnInit {
 
   showLoader = false;
 
+  asset = {
+    pdf: '../../../assets/image/PDF_icon.png',
+  };
+
+  theme = {
+    theme1: {
+      'margin-right': '10px',
+      width: '38px',
+      height: '44px',
+      cursor: 'pointer',
+    },
+  };
+
   @ViewChild('myTableElementId') myTableElementId?: ElementRef;
 
   // @ViewChild('userList', { static: false }) userList!: ElementRef;
@@ -166,6 +179,4 @@ export class UserListComponent implements OnInit {
         });
     }, 2000);
   }
-
-
 }

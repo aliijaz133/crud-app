@@ -5,18 +5,14 @@
         <div class="header-block">
           <div class="menu-c">
             <img
-              src="../../../assets/image/crud-logo.png"
+              [src]="asset.logo"
               width="80px"
               alt="Logo"
               style="margin: 5px; cursor: pointer"
             />
           </div>
           <div class="userprofile">
-            <button
-              mat-raised-button
-              matBadgeColor="warn"
-              class="btn-icon"
-            >
+            <button mat-raised-button matBadgeColor="warn" class="btn-icon">
               <mat-icon style="color: #9dacb4; cursor: pointer; margin: 0px"
                 >notifications</mat-icon
               >
@@ -26,7 +22,7 @@
               <div class="logo-img">
                 <img
                   #img
-                  src="../../../assets/image/avatar.png"
+                  [src]="asset.avatar"
                   width="35px"
                   height="35px"
                   style="border-radius: 100%"

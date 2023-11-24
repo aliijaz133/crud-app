@@ -8,7 +8,7 @@
     <div style="display: flex; justify-content: center">
       <section>
         <img
-          src="../../../assets/image/metamask_fox.svg.png"
+          [src]="asset.fox"
           alt="MetaMask"
           style="width: 100px"
           class="meta-mask__img"
@@ -16,11 +16,7 @@
         />
         <div class="metamask-detail">
           <div class="meta-mask__profile">
-            <img
-              #imgZooming
-              src="../../../assets/image/meta-mask-account.png"
-              alt="MetaMask Avatar"
-            />
+            <img #imgZooming [src]="asset.avatar" alt="MetaMask Avatar" />
             <label style="font-weight: 500">CRUD-App</label>
             <button
               class="details-btn"
@@ -38,11 +34,7 @@
                 cursor: pointer;
               "
             >
-              <img
-                src="../../../assets/image/ethereum_logo.svg.png"
-                alt="Ethereum"
-                style="width: 20px"
-              />
+              <img [src]="asset.eth" alt="Ethereum" style="width: 20px" />
               {{ userBalance }} ETH
             </p>
 

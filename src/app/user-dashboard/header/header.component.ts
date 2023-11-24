@@ -20,6 +20,11 @@ export class HeaderComponent implements OnInit {
   alert_count: any;
   showLoader = false;
 
+  asset = {
+    logo: '../../../assets/image/crud-logo.png',
+    avatar: '../../../assets/image/avatar.png',
+  };
+
   constructor(
     public route: ActivatedRoute,
     private authService: AuthService,
@@ -30,7 +35,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.showLoader = true;
 
     this.getUserName();
@@ -38,7 +42,6 @@ export class HeaderComponent implements OnInit {
     setTimeout(() => {
       this.showLoader = false;
     }, 2000);
-
   }
 
   logout(): void {
@@ -46,7 +49,6 @@ export class HeaderComponent implements OnInit {
   }
 
   getUserName() {
-    return this.userName = this.authService.getLoggedInUserName();
+    return (this.userName = this.authService.getLoggedInUserName());
   }
-
 }

@@ -41,6 +41,12 @@ export class MetaMaskComponent implements OnInit {
 
   ethRate!: number;
 
+  asset = {
+    fox: '../../../assets/image/metamask_fox.svg.png',
+    eth: '../../../assets/image/ethereum_logo.svg.png',
+    avatar: '../../../assets/image/meta-mask-account.png',
+  };
+
   swapvalue: FormGroup;
 
   constructor(

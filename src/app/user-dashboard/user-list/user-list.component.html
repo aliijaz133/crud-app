@@ -51,9 +51,9 @@
         </h3>
 
         <img
-          src="../../../assets/image/PDF_icon.png"
+          [src]="asset.pdf"
           alt="PDF Icon"
-          style="margin-right: 10px; width: 38px; height: 44px; cursor: pointer"
+          [style]="theme.theme1"
           (click)="generatePDF()"
           matTooltip="Generate PDF"
         />
