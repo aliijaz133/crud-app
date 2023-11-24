@@ -187,7 +187,12 @@ export class MetaMaskComponent implements OnInit {
       const dollarV = this.swapvalue.get('usdtValue')?.value;
 
       const totalValue = dollarV / 0.0043;
+
       this.totalValue = totalValue;
+
+      setTimeout(() => {
+        this.totalValue = 0;
+      }, 10000);
 
       if (totalValue) {
         console.log('BNB Value:', this.totalValue);
