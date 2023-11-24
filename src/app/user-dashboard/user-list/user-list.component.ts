@@ -33,7 +33,7 @@ export class UserListComponent implements OnInit {
 
   @ViewChild('myTableElementId') myTableElementId?: ElementRef;
 
-  @ViewChild('userList', { static: false }) userList!: ElementRef;
+  // @ViewChild('userList', { static: false }) userList!: ElementRef;
 
   private url: string = 'http://localhost:3000/api/user-dashboard/user-list';
 
@@ -167,15 +167,5 @@ export class UserListComponent implements OnInit {
     }, 2000);
   }
 
-  printTable() {
-    const printContents = this.userList.nativeElement.innerHTML;
-    const originalContents = (document.body.innerHTML = '<table></table>');
 
-    document.body.innerHTML = printContents;
-
-    setTimeout(() => {
-      window.print();
-      document.body.innerHTML = originalContents;
-    }, 100);
-  }
 }
