@@ -37,7 +37,7 @@ export class MetaMaskComponent implements OnInit {
   transactions!: Transaction[];
   dollarRate!: number;
 
-  totalValue!: number;
+  totalValue?: number;
 
   ethRate!: number;
 
