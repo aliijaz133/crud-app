@@ -20,6 +20,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { AccountBlockComponent } from './account-block/account-block.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DefaultComponent } from './default/default.component';
 
 registerLocaleData(en);
 
@@ -30,6 +31,7 @@ registerLocaleData(en);
     LoaderComponent,
     SigninComponent,
     AccountBlockComponent,
+    DefaultComponent,
   ],
   imports: [
     BrowserModule,

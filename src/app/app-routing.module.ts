@@ -3,35 +3,43 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { AuthGuard } from './service/auth-guard.service';
+import { DefaultComponent } from './default/default.component';
 
 const routes: Routes = [
   {
-    path: "",
-    redirectTo: "signup",
-    pathMatch: "full"
+    path: '',
+    redirectTo: 'crud',
+    pathMatch: 'full',
   },
   {
-    path: "signup",
-    component: SignupComponent
+    path: 'crud',
+    component: DefaultComponent,
   },
   {
-    path: "signin",
-    component: SigninComponent
+    path: 'signup',
+    component: SignupComponent,
   },
   {
-    path: "user-dashboard",
-    loadChildren: () => import('./user-dashboard/user-dashboard.module').then(u => u.UserDashboardModule),
-    canActivate: [AuthGuard]
+    path: 'signin',
+    component: SigninComponent,
   },
   {
-    path: "**",
-    redirectTo: "user-dashboard",
-    pathMatch: "full",
-  }
+    path: 'user-dashboard',
+    loadChildren: () =>
+      import('./user-dashboard/user-dashboard.module').then(
+        (u) => u.UserDashboardModule
+      ),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: '**',
+    redirectTo: 'user-dashboard',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
