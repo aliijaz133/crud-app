@@ -33,6 +33,8 @@ export class UserListComponent implements OnInit {
 
   @ViewChild('myTableElementId') myTableElementId?: ElementRef;
 
+  @ViewChild('userList', { static: false }) userList!: ElementRef;
+
   private url: string = 'http://localhost:3000/api/user-dashboard/user-list';
 
   exportAsConfig: ExportAsConfig = {
@@ -42,12 +44,14 @@ export class UserListComponent implements OnInit {
       unit: 'mm',
       format: 'a4',
       pageWidth: 210,
+      pageHeight: 297,
       margins: {
         top: 20,
         bottom: 20,
         left: 20,
         right: 20,
       },
+      image: { type: 'pdf', quality: 100 },
     },
     elementIdOrContent: 'myTableElementId',
   };
@@ -161,5 +165,17 @@ export class UserListComponent implements OnInit {
           this.toastr.success('Pdf file has been created successfully.');
         });
     }, 2000);
+  }
+
+  printTable() {
+    const printContents = this.userList.nativeElement.innerHTML;
+    const originalContents = (document.body.innerHTML = '<table></table>');
+
+    document.body.innerHTML = printContents;
+
+    setTimeout(() => {
+      window.print();
+      document.body.innerHTML = originalContents;
+    }, 100);
   }
 }

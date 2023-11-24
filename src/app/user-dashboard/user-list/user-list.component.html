@@ -58,9 +58,11 @@
           matTooltip="Generate PDF"
         />
       </div>
+      <!-- 
+      <button (click)="printTable()">Print Table</button> -->
       <!-- User Data Table -->
       <div class="table-container" id="myTableElementId">
-        <table class="table" *ngIf="userData !== null">
+        <table class="table" *ngIf="userData !== null" #userList>
           <thead class="table-dark">
             <tr>
               <th>ID</th>
