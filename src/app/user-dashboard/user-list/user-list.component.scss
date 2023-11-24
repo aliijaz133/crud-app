@@ -1,6 +1,6 @@
 main {
-  background-color: #f3f3f3;
-  height: 100vh !important;
+  background-color: #494a4b;
+  height: 100vh;
 }
 
 .main-container {
@@ -102,7 +102,7 @@ th {
   top: -6px;
   right: -21px;
   background-color: #000000;
-  color:#fff;
+  color: #fff;
   border-bottom-right-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
   transition: var(--transition-cubic-bezier);
@@ -118,7 +118,7 @@ th {
   top: -6px;
   right: -21px;
   background-color: #000000;
-  color:#ffffff;
+  color: #ffffff;
   border: none;
   cursor: pointer;
   border-bottom-right-radius: var(--border-radius);

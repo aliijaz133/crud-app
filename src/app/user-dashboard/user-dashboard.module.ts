@@ -27,6 +27,7 @@ import { MatInputModule } from '@angular/material/input';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { TokenFormatPipe } from './pipe/token-format.pipe';
 import { ExportAsModule } from 'ngx-export-as';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { ExportAsModule } from 'ngx-export-as';
     MatFormFieldModule,
     MatInputModule,
     ExportAsModule,
+    NgbTooltipModule,
   ],
 })
 export class UserDashboardModule {}

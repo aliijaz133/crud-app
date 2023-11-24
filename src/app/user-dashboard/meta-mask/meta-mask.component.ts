@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Web3Service } from 'src/app/service/web3.service';
 import { MatDialog } from '@angular/material/dialog';

@@ -2,6 +2,8 @@
   display: grid;
   grid-template-columns: 250px auto;
   column-gap: 10px;
+  background-color: #494a4b;
+  height: 100vh;
 }
 
 section {
@@ -17,7 +19,7 @@ section {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 20px 0px;
+  padding: 20px 40px;
 }
 
 .metamask-detail {

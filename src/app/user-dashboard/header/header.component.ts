@@ -25,11 +25,7 @@ export class HeaderComponent implements OnInit {
     avatar: '../../../assets/image/avatar.png',
   };
 
-  constructor(
-    public route: ActivatedRoute,
-    private authService: AuthService,
-    private router: Router
-  ) {
+  constructor(public route: ActivatedRoute, private authService: AuthService) {
     this.notifications_list = [];
     this.alert_count = '';
   }
