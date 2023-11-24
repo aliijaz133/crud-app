@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -12,7 +11,9 @@ export class AuthService {
 
   private baseUrl = 'http://localhost:3000/api';
 
-  constructor(private router: Router, private http: HttpClient) { }
+  signIn = ['/signin'];
+
+  constructor(private router: Router, private http: HttpClient) {}
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem(this.USER_STORAGE_KEY);
@@ -24,10 +25,9 @@ export class AuthService {
   }
 
   logout(): void {
-
     localStorage.removeItem(this.USER_STORAGE_KEY);
     localStorage.removeItem(this.USERNAME_STORAGE_KEY);
-    this.router.navigate(['/signin']);
+    this.router.navigate(this.signIn);
   }
 
   getLoggedInUserName() {

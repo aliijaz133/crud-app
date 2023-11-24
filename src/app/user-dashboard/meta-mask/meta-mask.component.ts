@@ -49,8 +49,7 @@ export class MetaMaskComponent implements OnInit {
     public dialog: MatDialog,
     private transactionService: TransactionService,
     private formBuilder: FormBuilder,
-    private exchangeRate: ExchangeRateService,
-    private el: ElementRef
+    private exchangeRate: ExchangeRateService
   ) {
     this.swapvalue = this.formBuilder.group({
       bnbValue: new FormControl('', [
@@ -67,7 +66,7 @@ export class MetaMaskComponent implements OnInit {
   showDetail() {
     this.dialog.open(DetailMetamaskComponent);
   }
-  
+
   async ngOnInit() {
     this.transactionService.getTransactions().subscribe((transactions) => {
       this.transactions = transactions;
@@ -205,24 +204,6 @@ export class MetaMaskComponent implements OnInit {
     if (match) {
       const formatted = match[1] + (match[1] && match[2] ? ' ' : '') + match[2];
       event.target.value = formatted;
-    }
-  }
-
-  @ViewChild('imgZooming', { static: false }) imgZooming!: ElementRef;
-
-  zoomedIn: boolean = false;
-
-  zoomingSetting() {
-    this.zoomedIn = !this.zoomedIn;
-
-    const imgElement = this.imgZooming.nativeElement as HTMLImageElement;
-
-    if (this.zoomedIn) {
-      imgElement.style.width = '1000px';
-      imgElement.style.height = 'auto';
-    } else {
-      imgElement.style.width = 'auto';
-      imgElement.style.height = 'auto';
     }
   }
 }
