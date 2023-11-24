@@ -16,6 +16,8 @@ export class SidebarComponent implements OnInit {
 
   userlist = '/user-dashboard/user-list';
 
+  status = 'active';
+
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {

@@ -1,7 +1,7 @@
 <main>
   <div class="offcanvas-body">
     <div class="menu-container">
-      <a [routerLink]="home" routerLinkActive="active">
+      <a [routerLink]="home" [routerLinkActive]="status">
         <div class="logo_title">
           <mat-icon matTooltip="Home">home</mat-icon>
           <h4>Home</h4>
@@ -13,13 +13,13 @@
           <h4>Prediction</h4>
         </div>
       </a> -->
-      <a [routerLink]="metamask" routerLinkActive="active">
+      <a [routerLink]="metamask" [routerLinkActive]="status">
         <div class="logo_title">
           <mat-icon matTooltip="Explore MetaMask">explore</mat-icon>
           <h4>Explore MetaMask</h4>
         </div>
       </a>
-      <a [routerLink]="userlist" routerLinkActive="active">
+      <a [routerLink]="userlist" [routerLinkActive]="status">
         <div class="logo_title">
           <mat-icon matTooltip="User List">list</mat-icon>
           <h4>User List</h4>
