@@ -16,4 +16,10 @@ export class AuthGuard implements CanActivate {
       return false;
     }
   }
+
+  getUserName() {
+    setTimeout(() => {
+      console.log('Git');
+    });
+  }
 }
