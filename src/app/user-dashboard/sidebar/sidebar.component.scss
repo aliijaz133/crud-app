@@ -18,7 +18,7 @@ main {
   width: 250px;
   border-right: 1px solid #000;
   padding: 0% !important;
-  background-color: rgb(255, 255, 255);
+  background-color: #cacaca;
   box-shadow: 1px 2px 2px #000;
   height: 100vh;
 }
@@ -26,8 +26,10 @@ main {
 .menu-container {
   display: flex;
   flex-direction: column;
+  background-color: #95efaf;
   .logo_title {
     display: grid;
+
     grid-template-columns: 30px auto;
     column-gap: 10px;
     border-bottom: 1px solid LightGray;
@@ -40,7 +42,7 @@ main {
 }
 
 .logo_title:hover {
-  background-color: lavender;
+  background-color: #29f562;
 }
 
 a {
@@ -54,7 +56,7 @@ a {
 }
 
 .active {
-  background-color: rgb(26, 236, 166);
+  background-color: #29f562;
 }
 
 /* Media query for screens with a maximum width of 600 pixels (adjust as needed) */

@@ -168,15 +168,15 @@ export class UserListComponent implements OnInit {
     }
   }
 
-  generatePDF() {
-    this.showLoader = true;
-    setTimeout(() => {
-      this.showLoader = false;
-      this.exportAsService
-        .save(this.exportAsConfig, 'User List')
-        .subscribe(() => {
-          this.toastr.success('Pdf file has been created successfully.');
-        });
-    }, 2000);
-  }
+  // generatePDF() {
+  //   this.showLoader = true;
+  //   setTimeout(() => {
+  //     this.showLoader = false;
+  //     this.exportAsService
+  //       .save(this.exportAsConfig, 'User List')
+  //       .subscribe(() => {
+  //         this.toastr.success('Pdf file has been created successfully.');
+  //       });
+  //   }, 2000);
+  // }
 }

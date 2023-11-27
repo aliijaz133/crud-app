@@ -12,30 +12,20 @@
           justify-content: space-around;
           flex-wrap: wrap;
           align-items: center;
-          background-color: aquamarine;
+          background-color: #1fb46c;
+          border-top-right-radius: 20px;
+          border-top-left-radius: 20px;
         "
         class="f-w"
       >
-        <div class="search">
-          <div class="search-box">
-            <div class="search-field">
-              <input
-                placeholder="Search..."
-                class="input"
-                type="text"
-                [(ngModel)]="searchQuery"
-                (input)="applyFilter()"
-              />
-              <div class="search-box-icon">
-                <button class="btn-icon-content" matTooltip="Filter Data">
-                  <i
-                    class="fa fa-filter"
-                    style="font-size: 24px; color: rgb(255, 255, 255)"
-                  ></i>
-                </button>
-              </div>
-            </div>
-          </div>
+        <div>
+          <input
+            placeholder="Search User..."
+            class="input"
+            type="text"
+            [(ngModel)]="searchQuery"
+            (input)="applyFilter()"
+          />
         </div>
         <h3
           *ngIf="
@@ -50,35 +40,39 @@
           Total User: {{ userData.length }}
         </h3>
 
-        <img
+        <!-- <img
           [src]="asset.pdf"
           alt="PDF Icon"
           [style]="theme.theme1"
           (click)="generatePDF()"
           matTooltip="Generate PDF"
-        />
+        /> -->
       </div>
       <!-- 
       <button (click)="printTable()">Print Table</button> -->
       <!-- User Data Table -->
       <div class="table-container" id="myTableElementId">
-        <table class="table" *ngIf="userData !== null" #userList>
-          <thead class="table-dark">
-            <tr>
-              <th>ID</th>
+        <table *ngIf="userData !== null" #userList>
+          <thead>
+            <tr class="table-dark__head">
+              <th style="text-align: center">ID</th>
               <th>Name</th>
               <th>Email</th>
               <th>Mobile</th>
+              <th>User Id</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
           </thead>
           <tbody *ngFor="let user of userData; let index = index">
             <tr>
-              <td class="text-break">{{ incrementalId + index }}</td>
+              <td class="text-break" style="text-align: center">
+                {{ incrementalId + index }}
+              </td>
               <td class="text-break">{{ user.userName }}</td>
               <td class="text-break">{{ user.userEmail }}</td>
               <td class="text-break">{{ user.userMobile }}</td>
+              <td>{{ user._id | tokenFormat }}</td>
               <td>
                 <mat-icon
                   style="color: #0000ff"
@@ -109,5 +103,3 @@
   </div>
 </main>
 <app-loader *ngIf="showLoader"></app-loader>
-
-

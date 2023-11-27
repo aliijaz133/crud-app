@@ -1,11 +1,16 @@
 <main>
   <div class="main-container">
     <div>
-      <img src="../../assets/image/crud-logo.png" alt="Logo" />
-      <h2>CRUD</h2>
-      <h5>Create - Retrieve - Update - Delete</h5>
-      <button>Sign Up</button>
-      <button>Login</button>
+      <div class="logo-conatiner">
+        <img src="../../assets/image/crud-logo.png" alt="Logo" />
+        <h2>CRUD</h2>
+        <h5>Create - Retrieve - Update - Delete</h5>
+      </div>
+      <div class="btn-container">
+        <button class="btn-signup" (click)="signUp()">Create an Account</button>
+        <button class="btn-login" (click)="login()">Login</button>
+      </div>
     </div>
   </div>
 </main>
+<loader *ngIf="showLoader"></loader>

@@ -1,5 +1,5 @@
 main {
-  background-image: linear-gradient(to bottom right, pink, #085dad);
+  background-image: linear-gradient(to bottom right, #ffaaec, #dbdbdb);
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -16,4 +16,54 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
   width: max-content;
+}
+
+img {
+  width: 200px;
+}
+
+.btn-container,
+.logo-conatiner {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-container {
+  display: flex;
+  gap: 20px;
+}
+
+h2 {
+  color: #fff;
+  font-size: 2rem;
+  margin-top: 15px;
+}
+
+h5 {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.btn-signup {
+  background-color: #0ea5a5;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  border-radius: 10px;
+}
+
+.btn-login {
+  background-color: #ffffff00;
+  color: white;
+  padding: 15px 110px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  border-radius: 10px;
+  border: 2px solid #fff;
 }

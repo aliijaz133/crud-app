@@ -1,274 +1,273 @@
 main {
-    position: sticky;
-    top: 0%;
-    z-index: 1;
-  }
-  
-  .header {
-    .nav {
-      display: flex;
-      position: relative;
-      background-color: transparent;
-      align-items: center;
-      flex-wrap: nowrap;
-      .header-block {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #9d9d9d;
-        border-bottom-left-radius: 5px;
-        width: 100%;
-      }
-  
-      .userprofile {
-        padding: 12px 0px;
-        margin: 0;
-        display: flex;
-        z-index: 4;
-        align-items: center;
-        .btn-icon {
-          background: #e7edf0;
-          border: 1px solid #e7edf0;
-          border-radius: 11.063px;
-          margin-right: 10px;
-          padding: 5px;
-        }
-        .user-menu {
-          background: #f7f7f9;
-          border: 1.1063px solid #c5c5c5;
-          border-radius: 15.4881px;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          align-items: center;
-          margin-right: 10px;
-          cursor: pointer;
-  
-          .logo-img {
-            display: flex;
-            max-width: 221px;
-            margin: 0 12px 0 12px;
-  
-            @media only screen and (max-width: 600px) {
-              max-width: 160px;
-              margin: 0 8px 0 8px;
-            }
-  
-            /* Small devices (portrait tablets and large phones, 600px and up) */
-            @media only screen and (min-width: 600px) {
-              max-width: 180px;
-              margin: 0 8px 0 8px;
-            }
-  
-            /* Medium devices (landscape tablets, 768px and up) */
-            @media only screen and (min-width: 768px) {
-              max-width: 200px;
-              margin: 0 10px 0 10px;
-            }
-            /* Large devices (laptops/desktops, 992px and up) */
-            @media only screen and (min-width: 992px) {
-              max-width: 221px;
-              margin: 0 12px 0 12px;
-            }
-  
-            /* Extra large devices (large laptops and desktops, 1200px and up) */
-            @media only screen and (min-width: 1200px) {
-              max-width: 221px;
-              margin: 0 12px 0 12px;
-            }
-          }
-          .name {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            .title {
-              font-family: Arial, Helvetica, sans-serif;
-              font-style: normal;
-              font-weight: 500;
-              font-size: 15px;
-              line-height: 140%;
-              margin-bottom: 0;
-              color: #403f3f;
-              @media only screen and (max-width: 600px) {
-                font-size: 12px;
-              }
-  
-              /* Small devices (portrait tablets and large phones, 600px and up) */
-              @media only screen and (min-width: 600px) {
-                font-size: 14px;
-              }
-  
-              /* Medium devices (landscape tablets, 768px and up) */
-              @media only screen and (min-width: 768px) {
-                font-size: 14px;
-              }
-              /* Large devices (laptops/desktops, 992px and up) */
-              @media only screen and (min-width: 992px) {
-                font-size: 15px;
-              }
-  
-              /* Extra large devices (large laptops and desktops, 1200px and up) */
-              @media only screen and (min-width: 1200px) {
-                font-size: 15px;
-              }
-            }
-            .position {
-              font-family: "Poppins";
-              font-style: normal;
-              font-weight: 400;
-              font-size: 10px;
-              line-height: 140%;
-              color: #8d8d8d;
-              margin-bottom: 0rem;
-              @media only screen and (max-width: 600px) {
-                font-size: 8px;
-              }
-  
-              /* Small devices (portrait tablets and large phones, 600px and up) */
-              @media only screen and (min-width: 600px) {
-                font-size: 8px;
-              }
-  
-              /* Medium devices (landscape tablets, 768px and up) */
-              @media only screen and (min-width: 768px) {
-                font-size: 10px;
-              }
-              /* Large devices (laptops/desktops, 992px and up) */
-              @media only screen and (min-width: 992px) {
-                font-size: 10px;
-              }
-  
-              /* Extra large devices (large laptops and desktops, 1200px and up) */
-              @media only screen and (min-width: 1200px) {
-                font-size: 10px;
-              }
-            }
-          }
-          .notification {
-            display: flex;
-            justify-content: center;
-            margin-left: 92px;
-            @media only screen and (max-width: 600px) {
-              margin-left: 50px;
-            }
-  
-            /* Small devices (portrait tablets and large phones, 600px and up) */
-            @media only screen and (min-width: 600px) {
-              margin-left: 50px;
-            }
-  
-            /* Medium devices (landscape tablets, 768px and up) */
-            @media only screen and (min-width: 768px) {
-              margin-left: 65px;
-            }
-            /* Large devices (laptops/desktops, 992px and up) */
-            @media only screen and (min-width: 992px) {
-              margin-left: 92px;
-            }
-  
-            /* Extra large devices (large laptops and desktops, 1200px and up) */
-            @media only screen and (min-width: 1200px) {
-              margin-left: 92px;
-            }
-  
-            img {
-              cursor: pointer;
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  .list-item {
-    color: #1a1f36;
-    font-family: Inter;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
-    display: flex !important;
-    align-items: center !important;
-    margin: 0 !important;
-    word-break: break-all;
-    max-width: 240px;
-    margin-right: 12px !important;
-  }
-  .list-detail {
-    color: var(--knock-gray-200, #a5acb8);
-    font-family: Poppins;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 4px;
-    display: flex !important;
-    align-items: center !important;
-    margin: 0 !important;
-  }
-  .list-data {
+  position: sticky;
+  top: 0%;
+  z-index: 1;
+}
+
+.header {
+  .nav {
     display: flex;
-    justify-content: space-between;
-  }
-  ul {
-    list-style: none !important;
-  }
-  ul li {
     position: relative;
-    cursor: pointer;
-    margin: 0 auto;
-    padding: 4px;
-    border-radius: 4px;
-    border: 1px solid #894be9;
-  }
-  .notification {
-    color: var(--gray-gray-900, #1a1f36);
-    font-family: Poppins;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 20px;
-    padding: 12px 16px;
-    align-items: flex-start;
-    gap: 94px;
-    align-self: stretch;
-  }
-  .nav-list {
-    list-style: none;
-    padding: 0%;
-    margin-bottom: 0%;
-    margin: 8px 12px;
-  }
-  
-  .unread {
-    background-color: #4f63f042 !important;
-  }
-  
-  .read {
-    background: rgb(255, 255, 255);
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(238, 238, 238, 1) 42%,
-      rgba(255, 255, 255, 1) 100%
-    );
-  }
-  
-  .title-notification {
-    border-bottom: 1px solid rgba(247, 243, 243, 0.397);
-    padding-bottom: 10px;
-  }
-  
-  .menu-c {
-    display: flex;
+    background-color: transparent;
     align-items: center;
-    gap: 20px;
-  }
-  
-  @media (max-width:400px) {
+    flex-wrap: nowrap;
     .header-block {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #e3dfdf;
+      border-bottom-left-radius: 5px;
+      width: 100%;
+    }
+
+    .userprofile {
+      padding: 12px 0px;
+      margin: 0;
+      display: flex;
+      z-index: 4;
+      align-items: center;
+      .btn-icon {
+        background: #e7edf0;
+        border: 1px solid #e7edf0;
+        border-radius: 11.063px;
+        margin-right: 10px;
+        padding: 5px;
+      }
+      .user-menu {
+        background: #f7f7f9;
+        border: 1.1063px solid #c5c5c5;
+        border-radius: 15.4881px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 10px;
+        cursor: pointer;
+
+        .logo-img {
+          display: flex;
+          max-width: 221px;
+          margin: 0 12px 0 12px;
+
+          @media only screen and (max-width: 600px) {
+            max-width: 160px;
+            margin: 0 8px 0 8px;
+          }
+
+          /* Small devices (portrait tablets and large phones, 600px and up) */
+          @media only screen and (min-width: 600px) {
+            max-width: 180px;
+            margin: 0 8px 0 8px;
+          }
+
+          /* Medium devices (landscape tablets, 768px and up) */
+          @media only screen and (min-width: 768px) {
+            max-width: 200px;
+            margin: 0 10px 0 10px;
+          }
+          /* Large devices (laptops/desktops, 992px and up) */
+          @media only screen and (min-width: 992px) {
+            max-width: 221px;
+            margin: 0 12px 0 12px;
+          }
+
+          /* Extra large devices (large laptops and desktops, 1200px and up) */
+          @media only screen and (min-width: 1200px) {
+            max-width: 221px;
+            margin: 0 12px 0 12px;
+          }
+        }
+        .name {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          .title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 140%;
+            margin-bottom: 0;
+            color: #403f3f;
+            @media only screen and (max-width: 600px) {
+              font-size: 12px;
+            }
+
+            /* Small devices (portrait tablets and large phones, 600px and up) */
+            @media only screen and (min-width: 600px) {
+              font-size: 14px;
+            }
+
+            /* Medium devices (landscape tablets, 768px and up) */
+            @media only screen and (min-width: 768px) {
+              font-size: 14px;
+            }
+            /* Large devices (laptops/desktops, 992px and up) */
+            @media only screen and (min-width: 992px) {
+              font-size: 15px;
+            }
+
+            /* Extra large devices (large laptops and desktops, 1200px and up) */
+            @media only screen and (min-width: 1200px) {
+              font-size: 15px;
+            }
+          }
+          .position {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 10px;
+            line-height: 140%;
+            color: #8d8d8d;
+            margin-bottom: 0rem;
+            @media only screen and (max-width: 600px) {
+              font-size: 8px;
+            }
+
+            /* Small devices (portrait tablets and large phones, 600px and up) */
+            @media only screen and (min-width: 600px) {
+              font-size: 8px;
+            }
+
+            /* Medium devices (landscape tablets, 768px and up) */
+            @media only screen and (min-width: 768px) {
+              font-size: 10px;
+            }
+            /* Large devices (laptops/desktops, 992px and up) */
+            @media only screen and (min-width: 992px) {
+              font-size: 10px;
+            }
+
+            /* Extra large devices (large laptops and desktops, 1200px and up) */
+            @media only screen and (min-width: 1200px) {
+              font-size: 10px;
+            }
+          }
+        }
+        .notification {
+          display: flex;
+          justify-content: center;
+          margin-left: 92px;
+          @media only screen and (max-width: 600px) {
+            margin-left: 50px;
+          }
+
+          /* Small devices (portrait tablets and large phones, 600px and up) */
+          @media only screen and (min-width: 600px) {
+            margin-left: 50px;
+          }
+
+          /* Medium devices (landscape tablets, 768px and up) */
+          @media only screen and (min-width: 768px) {
+            margin-left: 65px;
+          }
+          /* Large devices (laptops/desktops, 992px and up) */
+          @media only screen and (min-width: 992px) {
+            margin-left: 92px;
+          }
+
+          /* Extra large devices (large laptops and desktops, 1200px and up) */
+          @media only screen and (min-width: 1200px) {
+            margin-left: 92px;
+          }
+
+          img {
+            cursor: pointer;
+          }
+        }
+      }
     }
   }
-  
+}
+
+.list-item {
+  color: #1a1f36;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  word-break: break-all;
+  max-width: 240px;
+  margin-right: 12px !important;
+}
+.list-detail {
+  color: var(--knock-gray-200, #a5acb8);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 4px;
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+}
+.list-data {
+  display: flex;
+  justify-content: space-between;
+}
+ul {
+  list-style: none !important;
+}
+ul li {
+  position: relative;
+  cursor: pointer;
+  margin: 0 auto;
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid #894be9;
+}
+.notification {
+  color: var(--gray-gray-900, #1a1f36);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  padding: 12px 16px;
+  align-items: flex-start;
+  gap: 94px;
+  align-self: stretch;
+}
+.nav-list {
+  list-style: none;
+  padding: 0%;
+  margin-bottom: 0%;
+  margin: 8px 12px;
+}
+
+.unread {
+  background-color: #4f63f042 !important;
+}
+
+.read {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(238, 238, 238, 1) 42%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.title-notification {
+  border-bottom: 1px solid rgba(247, 243, 243, 0.397);
+  padding-bottom: 10px;
+}
+
+.menu-c {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 400px) {
+  .header-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
