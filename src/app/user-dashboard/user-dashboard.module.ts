@@ -28,6 +28,7 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
 import { TokenFormatPipe } from './pipe/token-format.pipe';
 import { ExportAsModule } from 'ngx-export-as';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
     MatInputModule,
     ExportAsModule,
     NgbTooltipModule,
+    NgxPaginationModule,
   ],
 })
 export class UserDashboardModule {}
